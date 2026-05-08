@@ -4,6 +4,8 @@
   import macDamagedImg from "$lib/assets/download/mac-damaged.webp";
   import macInstallImg from "$lib/assets/download/mac-install.webp";
   import macVerifiedImg from "$lib/assets/download/image.png";
+  import winWarningImg from "$lib/assets/download/windows-more-info.webp";
+  import winRunImg from "$lib/assets/download/windows-run.webp";
 
   let { showInstallationGuide = true }: { showInstallationGuide?: boolean } =
     $props();
@@ -787,16 +789,15 @@
                           Launch Exort
                         </h5>
                         <div
-                          class="mt-3 space-y-3 text-sm leading-7 text-gruvbox-muted"
+                          class="mt-3 space-y-3 text-md leading-7 text-gruvbox-muted"
                         >
                           <p>
-                            Once you’ve resolved any security warnings, you can
-                            launch Exort from your Applications folder or using
-                            Spotlight search.
+                            You can now open Exort from the Applications folder
+                            or spotlight.
                           </p>
                           <p>
-                            The app will now run normally without further
-                            security prompts.
+                            The app will now run normally without any more
+                            security warnings.
                           </p>
                         </div>
                       </div>
@@ -841,31 +842,18 @@
                         >
                           <div class="min-w-0">
                             <div
-                              class="space-y-3 text-sm leading-7 text-gruvbox-muted"
+                              class="space-y-3 text-md leading-7 text-gruvbox-muted mt-10"
                             >
                               <p>
-                                Locate the downloaded Exort.Setup.0.2.2-x64.exe
-                                file and double-click to run it.
+                                Locate the downloaded Exort.exe file and
+                                double-click to run it.
                               </p>
-                            </div>
-
-                            <div
-                              class="mt-4 rounded-[0.85rem] border border-[rgba(235,219,178,0.08)] bg-gruvbox-ink p-4"
-                            >
-                              <p
-                                class="text-xs font-semibold uppercase tracking-[0.18em] text-gruvbox-accent"
-                              >
-                                Security Notice
+                              <p>
+                                You will encounter a Windows security warning
                               </p>
-                              <div
-                                class="mt-2 space-y-2 text-sm leading-7 text-gruvbox-muted"
-                              >
-                                <p>
-                                  Windows will show security warnings since
-                                  Exort is not signed with a trusted
-                                  certificate.
-                                </p>
-                              </div>
+                              <p>
+                                Click "More info" to proceed with installation.
+                              </p>
                             </div>
                           </div>
 
@@ -873,7 +861,10 @@
                             <div
                               class="flex min-h-[12rem] w-full items-center justify-center rounded-[0.85rem] border border-dashed border-[rgba(235,219,178,0.14)] bg-[rgba(29,32,33,0.72)] px-5 py-8 text-center text-sm leading-6 text-gruvbox-muted"
                             >
-                              Add Windows installer warning screenshot
+                              <img
+                                src={winWarningImg}
+                                alt="Windows installer warning"
+                              />
                             </div>
                           </div>
                         </div>
@@ -899,19 +890,11 @@
                         >
                           <div class="min-w-0">
                             <div
-                              class="space-y-3 text-sm leading-7 text-gruvbox-muted"
+                              class="space-y-3 text-md leading-7 text-gruvbox-muted mt-10"
                             >
                               <p>
-                                You may encounter two types of security
-                                warnings.
-                              </p>
-                              <p>
-                                Publisher Verification Dialog: Click Run to
+                                On the next window, click "Run anyway" to
                                 proceed with installation.
-                              </p>
-                              <p>
-                                Windows SmartScreen: Click Run anyway to bypass
-                                the protection warning.
                               </p>
                             </div>
                           </div>
@@ -920,7 +903,7 @@
                             <div
                               class="flex min-h-[12rem] w-full items-center justify-center rounded-[0.85rem] border border-dashed border-[rgba(235,219,178,0.14)] bg-[rgba(29,32,33,0.72)] px-5 py-8 text-center text-sm leading-6 text-gruvbox-muted"
                             >
-                              Add Windows SmartScreen warning screenshot
+                              <img src={winRunImg} alt="Windows Run dialog" />
                             </div>
                           </div>
                         </div>
@@ -942,42 +925,16 @@
                           Complete installation
                         </h5>
                         <div
-                          class="mt-3 space-y-3 text-sm leading-7 text-gruvbox-muted"
+                          class="mt-3 space-y-3 text-md leading-7 text-gruvbox-muted"
                         >
                           <p>
-                            Follow the installation wizard prompts. Exort will
-                            be installed to your Programs folder and a desktop
-                            shortcut will be created.
+                            Follow the installer steps to complete the
+                            installation of Exort on your machine.
                           </p>
                           <p>
-                            After installation, you can launch Exort from the
-                            Start menu, desktop shortcut, or by searching for
-                            Exort.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </section>
-
-                  <section
-                    class="rounded-[1.1rem] border border-[rgba(235,219,178,0.08)] bg-[rgba(29,32,33,0.28)] p-5"
-                  >
-                    <div class="flex items-start gap-4">
-                      <div
-                        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-[0.85rem] border border-[rgba(235,219,178,0.08)] bg-[rgba(60,56,54,0.42)] text-sm font-semibold text-gruvbox-accent"
-                      >
-                        4
-                      </div>
-                      <div class="min-w-0 flex-1">
-                        <h5 class="text-lg font-medium text-white">
-                          You’re all set!
-                        </h5>
-                        <div
-                          class="mt-3 space-y-3 text-sm leading-7 text-gruvbox-muted"
-                        >
-                          <p>
-                            Once installed, launch Exort and start building
-                            amazing Arduino projects with AI assistance.
+                            You won’t see any more security warnings after this,
+                            and you can launch Exort from the Start menu or
+                            desktop shortcut.
                           </p>
                         </div>
                       </div>
