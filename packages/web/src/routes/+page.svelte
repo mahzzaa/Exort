@@ -10,13 +10,13 @@
     {
       title: "Serial Monitor",
       description:
-        "Read live device output. Ideal for boot logs, debug prints, and quick checks while you iterate.",
+        "Read live device output for boot logs, debug prints, and quick checks while you iterate on hardware behavior.",
       video: "/features/Exort-monitor.mp4",
     },
     {
       title: "Serial Plotter",
       description:
-        "Plot streaming values as simple charts so sensor tuning, calibration, and runtime issues are easier to spot.",
+        "Plot streaming values as simple charts so calibration, sensor tuning, and runtime issues are easier to spot fast.",
       video: "/features/Exort-plotter.mp4",
     },
     {
@@ -28,13 +28,13 @@
     {
       title: "Provider Connection",
       description:
-        "Bring your own AI provider setup and choose the models that match your workflow and budget.",
+        "Bring your own provider setup and pick the models that match how you debug, refactor, and ship embedded projects.",
       video: "/features/Exort-provider.mp4",
     },
     {
       title: "Embedded Agent",
       description:
-        "Let the agent inspect the project, edit code, and help with compile or upload.",
+        "Use an embedded-focused agent that can inspect the workspace, edit firmware, guide compile flows, and help you move from issue to fix without leaving Exort.",
       video: "/Exort.mp4",
     },
   ];
@@ -446,12 +446,6 @@
             {/each}
           </div>
         </div>
-        <!-- <p
-          bind:this={heroCopy}
-          class="mt-4 max-w-2xl text-sm leading-6 text-gruvbox-muted sm:text-base"
-        >
-          Edit, compile, upload, and monitor devices from one desktop workspace.
-        </p> -->
 
         <div
           bind:this={heroActions}
