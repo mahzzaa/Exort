@@ -6,6 +6,8 @@
   import DownloadSection from "$lib/components/landing/DownloadSection.svelte";
   import RunLocallySection from "$lib/components/landing/RunLocallySection.svelte";
   import SiteNav from "$lib/components/landing/SiteNav.svelte";
+  import { ArrowUpRight } from "lucide-svelte";
+
   const features = [
     {
       title: "Serial Monitor",
@@ -45,6 +47,17 @@
     "1,000+ boards",
     "4 free models",
     "Built for Arduino",
+  ];
+
+  const supportedBrands = [
+    { name: "Arduino", logo: "/brands/arduino.webp" },
+    { name: "ESP", logo: "/brands/ESP.webp" },
+    { name: "Raspberry Pi", logo: "/brands/raspberry.webp" },
+    { name: "STM32", logo: "/brands/STM32.webp" },
+    { name: "Nordic", logo: "/brands/nordic.webp" },
+    { name: "RISC-V", logo: "/brands/risc-v.webp" },
+    { name: "Atmel", logo: "/brands/atmel.webp" },
+    { name: "PJRC", logo: "/brands/pjrc.webp" },
   ];
 
   const mobileHeroHighlightGroups = heroHighlights.map(
@@ -329,25 +342,27 @@
 
   <main id="top">
     <section
-      class="relative mx-auto max-w-8xl overflow-hidden px-4 pb-8 pt-12 sm:px-6 lg:px-8 lg:pt-16"
+      class="relative mx-auto max-w-8xl overflow-hidden px-4 pb-8 pt-4 sm:px-6 lg:px-8 lg:pt-16"
     >
       <div class="relative z-10 grid gap-10 xl:grid-cols-2 xl:items-start">
         <div class="relative min-w-0 pt-6 xl:pr-4">
           <div
             bind:this={heroCopy}
-            class="flex min-w-0 w-full max-w-4xl flex-col items-start text-left lg:max-w-[36rem]"
+            class="flex w-full max-w-4xl flex-col items-start text-left lg:max-w-[44rem]"
           >
             <h1
-              class="max-w-full overflow-hidden font-heading font-bold leading-none tracking-[0.04em] text-3xl sm:text-5xl"
+              class="max-w-full overflow-hidden sm:overflow-visible font-heading font-bold leading-none tracking-[0.04em] text-2xl sm:text-5xl"
             >
               <span
                 bind:this={headlineLineEls[0]}
                 class="block max-w-full overflow-visible pb-[0.08em] leading-[1.08] text-gruvbox-fg0"
               >
                 <span
-                  class="relative inline-block max-w-full overflow-visible align-top pb-[0.08em] leading-[1.08]"
+                  class="relative block w-full max-w-full overflow-visible align-top pb-[0.08em] leading-[1.08]"
                 >
-                  <span class="block text-gruvbox-fg0">An open-source AI</span>
+                  <span class="block text-gruvbox-fg0 sm:whitespace-nowrap"
+                    >An open-source AI</span
+                  >
                 </span>
               </span>
               <span
@@ -355,10 +370,10 @@
                 class="block max-w-full overflow-visible pb-[0.08em] leading-[1.08] text-gruvbox-fg0"
               >
                 <span
-                  class="relative inline-block max-w-full overflow-visible align-top pb-[0.08em] leading-[1.08]"
+                  class="relative block w-full max-w-full overflow-visible align-top pb-[0.08em] leading-[1.08]"
                 >
                   <span
-                    class="inline-grid max-w-full overflow-hidden pb-[0.1em] leading-[1.08] sm:whitespace-nowrap"
+                    class="inline-grid max-w-full overflow-hidden sm:overflow-visible pb-[0.1em] leading-[1.08] sm:whitespace-nowrap"
                   >
                     <span
                       class="col-start-1 row-start-1 text-transparent sm:whitespace-nowrap"
@@ -401,44 +416,64 @@
             </h1>
 
             <p
-              class="mt-5 max-w-2xl text-md leading-8 text-gruvbox-muted sm:text-lg"
+              class="mt-5 max-w-2xl text-md leading-6 sm:leading-8 text-gruvbox-muted sm:text-lg"
             >
               An agent-driven coding environment for Arduino that helps turn
-              ideas into working projects.
+              ideas into working projects. Start with an idea, shape the code,
+              and bring it to life.
             </p>
 
             <div
               bind:this={heroActions}
-              class="mt-6 flex flex-wrap w-full justify-start gap-4"
+              class="mt-6 flex w-full flex-wrap justify-start gap-4"
             >
               <a
                 href="/download"
-                class="group relative inline-flex min-w-[9rem] items-center justify-center overflow-hidden rounded-full bg-gruvbox-ink px-6 py-3 text-sm font-medium backdrop-blur transition motion-reduce:transition-none"
+                class="group relative inline-flex min-w-[9rem] items-center justify-center overflow-hidden rounded-full bg-gruvbox-ink px-3 sm:px-6 py-3 sm:py-3.5 text-sm font-medium backdrop-blur transition motion-reduce:transition-none"
               >
                 <span
                   class="absolute inset-0 translate-x-full bg-gruvbox-orange transition-transform duration-300 ease-out group-hover:translate-x-0"
                   aria-hidden="true"
-                ></span>
-                <span
-                  class="relative z-10 transition-colors duration-300 group-hover:text-gruvbox-ink"
                 >
-                  Download Exort
+                </span>
+                <span
+                  class="relative flex items-center gap-4 z-10 transition-colors duration-300 group-hover:text-gruvbox-ink"
+                >
+                  Download Exort <ArrowUpRight class="h-4 w-4 " />
                 </span>
               </a>
               <a
-                href="https://discord.com/invite/xmcmcWkr4V"
-                class="group relative inline-flex min-w-[9rem] items-center justify-center overflow-hidden rounded-full bg-gruvbox-ink px-6 py-3 text-sm font-medium backdrop-blur transition motion-reduce:transition-none"
+                href="https://github.com/Razz19/Exort"
+                class="group relative inline-flex min-w-[9rem] items-center justify-center overflow-hidden rounded-full bg-gruvbox-ink px-3 sm:px-6 py-3 sm:py-3.5 text-sm font-medium backdrop-blur transition motion-reduce:transition-none"
               >
                 <span
                   class="absolute inset-0 translate-x-full bg-gruvbox-blue transition-transform duration-300 ease-out group-hover:translate-x-0"
                   aria-hidden="true"
                 ></span>
                 <span
-                  class="relative z-10 transition-colors duration-300 group-hover:text-gruvbox-ink"
+                  class="relative flex items-center gap-4 z-10 transition-colors duration-300 group-hover:text-gruvbox-ink"
                 >
-                  Join Our Discord
+                  View on GitHub
+                  <ArrowUpRight class="h-4 w-4 " />
                 </span>
               </a>
+            </div>
+
+            <div
+              class="mt-6 flex w-full flex-col items-center gap-2 sm:items-start"
+            >
+              <div
+                class="flex w-full flex-wrap items-center justify-center sm:justify-start gap-x-4 opacity-30 sm:gap-x-5"
+              >
+                {#each supportedBrands as brand}
+                  <img
+                    src={brand.logo}
+                    alt={brand.name}
+                    class="h-4 w-auto object-contain sm:h-5 lg:h-7 xl:h-8"
+                    loading="lazy"
+                  />
+                {/each}
+              </div>
             </div>
           </div>
         </div>
