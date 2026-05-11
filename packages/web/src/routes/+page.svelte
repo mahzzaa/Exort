@@ -329,184 +329,146 @@
 
   <main id="top">
     <section
-      class="relative mx-auto max-w-7xl overflow-hidden px-6 pb-8 pt-12 lg:px-8 lg:pt-16"
+      class="relative mx-auto max-w-8xl overflow-hidden px-4 pb-8 pt-12 sm:px-6 lg:px-8 lg:pt-16"
     >
-      <div
-        class="relative z-10 mx-auto flex max-w-4xl flex-col items-center text-center"
-      >
-        <h1
-          class="flex max-w-4xl flex-col gap-[0.08em] overflow-visible font-heading text-md font-semibold leading-none tracking-[0.04em] sm:text-4xl lg:max-w-5xl lg:text-4xl"
-        >
-          <span
-            bind:this={headlineLineEls[0]}
-            class="block overflow-visible pb-[0.08em] leading-[1.08] text-gruvbox-fg0"
+      <div class="relative z-10 grid gap-10 xl:grid-cols-2 xl:items-start">
+        <div class="relative min-w-0 pt-6 xl:pr-4">
+          <div
+            bind:this={heroCopy}
+            class="flex min-w-0 w-full max-w-4xl flex-col items-start text-left lg:max-w-[36rem]"
           >
-            <span
-              class="relative inline-block overflow-visible whitespace-nowrap align-top pb-[0.08em] leading-[1.08] drop-shadow-[0_0_14px_rgba(250,189,47,0.14)]"
-            >
-              <span class="block text-gruvbox-fg0"> Open Source </span>
-            </span>
-            <span
-              class="relative inline-block overflow-visible whitespace-nowrap align-top pb-[0.08em] leading-[1.08] drop-shadow-[0_0_14px_rgba(250,189,47,0.14)]"
+            <h1
+              class="max-w-full overflow-hidden font-heading font-bold leading-none tracking-[0.04em] text-3xl sm:text-5xl"
             >
               <span
-                class="inline-grid overflow-visible whitespace-nowrap pb-[0.1em] leading-[1.08]"
+                bind:this={headlineLineEls[0]}
+                class="block max-w-full overflow-visible pb-[0.08em] leading-[1.08] text-gruvbox-fg0"
               >
                 <span
-                  class="col-start-1 row-start-1 whitespace-nowrap text-transparent"
+                  class="relative inline-block max-w-full overflow-visible align-top pb-[0.08em] leading-[1.08]"
                 >
-                  Coding Agent
-                </span>
-                <span
-                  class="pointer-events-none col-start-1 row-start-1 whitespace-nowrap text-gruvbox-fg0"
-                >
-                  Coding Agent
-                </span>
-                <span
-                  class="pointer-events-none col-start-1 row-start-1 whitespace-nowrap pb-[0.12em] -mb-[0.12em] text-gruvbox-orange [clip-path:inset(0_100%_0_0)] opacity-0 motion-reduce:hidden animate-hero-text-sweep-right"
-                  aria-hidden="true"
-                >
-                  Coding Agent
-                </span>
-                <span
-                  class="pointer-events-none col-start-1 row-start-1 whitespace-nowrap pb-[0.12em] -mb-[0.12em] text-gruvbox-green [clip-path:inset(0_0_0_100%)] opacity-0 motion-reduce:hidden animate-hero-text-sweep-left [animation-delay:1.5s]"
-                  aria-hidden="true"
-                >
-                  Coding Agent
-                </span>
-                <span
-                  class="pointer-events-none col-start-1 row-start-1 whitespace-nowrap pb-[0.12em] -mb-[0.12em] text-gruvbox-blue [clip-path:inset(0_100%_0_0)] opacity-0 motion-reduce:hidden animate-hero-text-sweep-right [animation-delay:3s]"
-                  aria-hidden="true"
-                >
-                  Coding Agent
-                </span>
-                <span
-                  class="pointer-events-none col-start-1 row-start-1 whitespace-nowrap pb-[0.12em] -mb-[0.12em] text-gruvbox-yellow [clip-path:inset(0_0_0_100%)] opacity-0 motion-reduce:hidden animate-hero-text-sweep-left [animation-delay:4.5s]"
-                  aria-hidden="true"
-                >
-                  Coding Agent
+                  <span class="block text-gruvbox-fg0">An open-source AI</span>
                 </span>
               </span>
-            </span>
-          </span>
-          <span
-            bind:this={headlineLineEls[1]}
-            class="block overflow-visible pb-[0.08em] leading-[1.08] text-gruvbox-fg0 md:whitespace-nowrap"
-          >
-            For Embedded Development
-          </span>
-        </h1>
-
-        <div
-          bind:this={heroHighlightsWrap}
-          class="mt-4 w-full max-w-full uppercase text-gruvbox-text/50 sm:mt-8"
-          aria-label="Key hero highlights"
-        >
-          <div
-            class="flex min-h-[2rem] items-center justify-center text-center sm:hidden"
-          >
-            <div
-              bind:this={mobileHeroHighlightRow}
-              class="flex items-center justify-center whitespace-nowrap"
-            >
-              <p
-                bind:this={mobileHeroHighlightFirst}
-                class="text-xs tracking-[0.08em] text-gruvbox-text/60"
-              >
-                {mobileHeroHighlightGroups[0][0]}
-              </p>
               <span
-                class="mx-[0.45rem] text-sm font-bold text-gruvbox-accent/70"
-                aria-hidden="true">&bull;</span
+                bind:this={headlineLineEls[1]}
+                class="block max-w-full overflow-visible pb-[0.08em] leading-[1.08] text-gruvbox-fg0"
               >
-              <p
-                bind:this={mobileHeroHighlightSecond}
-                class="text-xs tracking-[0.08em] text-gruvbox-text/60"
+                <span
+                  class="relative inline-block max-w-full overflow-visible align-top pb-[0.08em] leading-[1.08]"
+                >
+                  <span
+                    class="inline-grid max-w-full overflow-hidden pb-[0.1em] leading-[1.08] sm:whitespace-nowrap"
+                  >
+                    <span
+                      class="col-start-1 row-start-1 text-transparent sm:whitespace-nowrap"
+                    >
+                      coding environment
+                    </span>
+                    <span
+                      class="pointer-events-none col-start-1 row-start-1 text-gruvbox-fg0 sm:whitespace-nowrap"
+                    >
+                      coding environment
+                    </span>
+                    <span
+                      class="pointer-events-none col-start-1 row-start-1 pb-[0.12em] -mb-[0.12em] text-gruvbox-orange [clip-path:inset(0_100%_0_0)] opacity-0 motion-reduce:hidden animate-hero-text-sweep-right sm:whitespace-nowrap"
+                      aria-hidden="true"
+                    >
+                      coding environment
+                    </span>
+                    <span
+                      class="pointer-events-none col-start-1 row-start-1 pb-[0.12em] -mb-[0.12em] text-gruvbox-green [clip-path:inset(0_0_0_100%)] opacity-0 motion-reduce:hidden animate-hero-text-sweep-left [animation-delay:1.5s] sm:whitespace-nowrap"
+                      aria-hidden="true"
+                    >
+                      coding environment
+                    </span>
+                    <span
+                      class="pointer-events-none col-start-1 row-start-1 pb-[0.12em] -mb-[0.12em] text-gruvbox-blue [clip-path:inset(0_100%_0_0)] opacity-0 motion-reduce:hidden animate-hero-text-sweep-right [animation-delay:3s] sm:whitespace-nowrap"
+                      aria-hidden="true"
+                    >
+                      coding environment
+                    </span>
+                    <span
+                      class="pointer-events-none col-start-1 row-start-1 pb-[0.12em] -mb-[0.12em] text-gruvbox-yellow [clip-path:inset(0_0_0_100%)] opacity-0 motion-reduce:hidden animate-hero-text-sweep-left [animation-delay:4.5s] sm:whitespace-nowrap"
+                      aria-hidden="true"
+                    >
+                      coding environment
+                    </span>
+                  </span>
+                </span>
+                <span class="block text-gruvbox-fg0">for Arduino.</span>
+              </span>
+            </h1>
+
+            <p
+              class="mt-5 max-w-2xl text-md leading-8 text-gruvbox-muted sm:text-lg"
+            >
+              An agent-driven coding environment for Arduino that helps turn
+              ideas into working projects.
+            </p>
+
+            <div
+              bind:this={heroActions}
+              class="mt-6 flex flex-wrap w-full justify-start gap-4"
+            >
+              <a
+                href="/download"
+                class="group relative inline-flex min-w-[9rem] items-center justify-center overflow-hidden rounded-full bg-gruvbox-ink px-6 py-3 text-sm font-medium backdrop-blur transition motion-reduce:transition-none"
               >
-                {mobileHeroHighlightGroups[0][1]}
-              </p>
+                <span
+                  class="absolute inset-0 translate-x-full bg-gruvbox-orange transition-transform duration-300 ease-out group-hover:translate-x-0"
+                  aria-hidden="true"
+                ></span>
+                <span
+                  class="relative z-10 transition-colors duration-300 group-hover:text-gruvbox-ink"
+                >
+                  Download Exort
+                </span>
+              </a>
+              <a
+                href="https://discord.com/invite/xmcmcWkr4V"
+                class="group relative inline-flex min-w-[9rem] items-center justify-center overflow-hidden rounded-full bg-gruvbox-ink px-6 py-3 text-sm font-medium backdrop-blur transition motion-reduce:transition-none"
+              >
+                <span
+                  class="absolute inset-0 translate-x-full bg-gruvbox-blue transition-transform duration-300 ease-out group-hover:translate-x-0"
+                  aria-hidden="true"
+                ></span>
+                <span
+                  class="relative z-10 transition-colors duration-300 group-hover:text-gruvbox-ink"
+                >
+                  Join Our Discord
+                </span>
+              </a>
             </div>
           </div>
-
-          <div
-            class="hidden w-full max-w-full items-center justify-center whitespace-nowrap sm:flex"
-          >
-            {#each heroHighlights as highlight, index}
-              <span
-                class="inline-flex shrink-0 items-center whitespace-nowrap text-sm"
-              >
-                {#if index > 0}
-                  <span
-                    class="mx-[0.6rem] text-lg font-bold text-gruvbox-accent/70"
-                    aria-hidden="true">&bull;</span
-                  >
-                {/if}
-                {highlight}
-              </span>
-            {/each}
-          </div>
         </div>
 
         <div
-          bind:this={heroActions}
-          class="mt-6 flex w-full justify-center space-x-4"
+          bind:this={heroScreenshotWrap}
+          class="relative z-10 grid min-w-0 w-full max-w-full xl:max-w-[64rem] xl:justify-self-end bg-gruvbox-fg0/10"
         >
-          <a
-            href="/download"
-            class="group relative inline-flex min-w-[9rem] items-center justify-center overflow-hidden rounded-full bg-gruvbox-ink px-6 py-3 text-sm font-medium backdrop-blur transition motion-reduce:transition-none"
-          >
-            <span
-              class="absolute inset-0 translate-x-full bg-gruvbox-orange transition-transform duration-300 ease-out group-hover:translate-x-0"
-              aria-hidden="true"
-            ></span>
-            <span
-              class="relative z-10 transition-colors duration-300 group-hover:text-gruvbox-ink"
-            >
-              Download Exort
-            </span>
-          </a>
-          <a
-            href="https://discord.com/invite/xmcmcWkr4V"
-            class="group relative inline-flex min-w-[9rem] items-center justify-center overflow-hidden rounded-full bg-gruvbox-ink px-6 py-3 text-sm font-medium backdrop-blur transition motion-reduce:transition-none"
-          >
-            <span
-              class="absolute inset-0 translate-x-full bg-gruvbox-blue transition-transform duration-300 ease-out group-hover:translate-x-0"
-              aria-hidden="true"
-            ></span>
-            <span
-              class="relative z-10 transition-colors duration-300 group-hover:text-gruvbox-ink"
-            >
-              Join Our Discord
-            </span>
-          </a>
-        </div>
-      </div>
-
-      <div
-        bind:this={heroScreenshotWrap}
-        class="relative left-1/2 z-10 mt-0 max-w-4xl -translate-x-1/2 px-2 sm:mt-1 sm:px-0 lg:mt-2"
-      >
-        <div class="relative mt-6 px-1 pb-4 sm:mt-8 sm:px-3 sm:pb-6">
-          <AppFrame contentClass="p-2 sm:p-3">
-            <div
-              class="relative overflow-hidden"
-              style="border-radius: 10px !important;"
-            >
-              <video
-                bind:this={heroScreenshot}
-                src="/Exort.mp4"
-                autoplay
-                muted
-                loop
-                playsinline
-                aria-label="Exort desktop application walkthrough video"
-                class="relative z-10 block h-auto w-full object-contain object-top [will-change:transform]"
+          <div class="w-full bg-gruvbox-bg p-2 sm:p-4">
+            <AppFrame frameClass="w-full min-w-0" contentClass="p-2 sm:p-3">
+              <div
+                class="relative w-full overflow-hidden"
                 style="border-radius: 10px !important;"
               >
-                <track kind="captions" />
-              </video>
-            </div>
-          </AppFrame>
+                <video
+                  bind:this={heroScreenshot}
+                  src="/Exort.mp4"
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  aria-label="Exort desktop application walkthrough video"
+                  class="relative z-10 block h-auto w-full object-contain object-top [will-change:transform]"
+                  style="border-radius: 10px !important;"
+                >
+                  <track kind="captions" />
+                </video>
+              </div>
+            </AppFrame>
+          </div>
         </div>
       </div>
     </section>
