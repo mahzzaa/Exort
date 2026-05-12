@@ -33,12 +33,6 @@
         "Bring your own provider setup and pick the models that match how you debug, refactor, and ship embedded projects.",
       video: "/features/Exort-provider.mp4",
     },
-    {
-      title: "Embedded Agent",
-      description:
-        "Use an embedded-focused agent that can inspect the workspace, edit firmware, guide compile flows, and help you move from issue to fix without leaving Exort.",
-      video: "/Exort.mp4",
-    },
   ];
 
   const heroHighlights = [
@@ -58,6 +52,26 @@
     { name: "RISC-V", logo: "/brands/risc-v.webp" },
     { name: "Atmel", logo: "/brands/atmel.webp" },
     { name: "PJRC", logo: "/brands/pjrc.webp" },
+  ];
+
+  const workflowSteps = [
+    {
+      number: "01",
+      color: "text-gruvbox-orange",
+      description:
+        "Ask Exort to understand the project and suggest the next change.",
+    },
+    {
+      number: "02",
+      color: "text-gruvbox-blue",
+      description: "Edit, compile, and upload to the selected board.",
+    },
+    {
+      number: "03",
+      color: "text-gruvbox-green",
+      description:
+        "Read live output with Serial Monitor or Plotter, then keep improving.",
+    },
   ];
 
   const mobileHeroHighlightGroups = heroHighlights.map(
@@ -105,14 +119,17 @@
     let mobileHeroHighlightIndex = 0;
 
     const applyMobileHeroHighlightGroup = (groupIndex: number) => {
-      if (!mobileHeroHighlightFirst || !mobileHeroHighlightSecond) {
+      const firstHighlightEl = mobileHeroHighlightFirst as HTMLParagraphElement | null;
+      const secondHighlightEl = mobileHeroHighlightSecond as HTMLParagraphElement | null;
+
+      if (!firstHighlightEl || !secondHighlightEl) {
         return;
       }
 
       const [firstHighlight, secondHighlight] =
         mobileHeroHighlightGroups[groupIndex];
-      mobileHeroHighlightFirst.textContent = firstHighlight;
-      mobileHeroHighlightSecond.textContent = secondHighlight;
+      firstHighlightEl.textContent = firstHighlight;
+      secondHighlightEl.textContent = secondHighlight;
     };
 
     const syncReducedMotion = (event: MediaQueryListEvent) => {
@@ -342,16 +359,18 @@
 
   <main id="top">
     <section
-      class="relative mx-auto max-w-8xl overflow-hidden px-4 pb-8 pt-4 sm:px-6 lg:px-8 lg:pt-16"
+      class="relative mx-auto max-w-7xl overflow-hidden px-4 pb-8 pt-4 sm:px-6 lg:px-8 lg:pt-16"
     >
-      <div class="relative z-10 grid gap-10 xl:grid-cols-2 xl:items-start">
+      <div
+        class="relative z-10 grid gap-8 xl:grid-cols-[minmax(0,0.9fr)_minmax(0,1.35fr)] xl:items-start xl:gap-12"
+      >
         <div class="relative min-w-0 pt-6 xl:pr-4">
           <div
             bind:this={heroCopy}
             class="flex w-full max-w-4xl flex-col items-start text-left lg:max-w-[44rem]"
           >
-            <h1
-              class="max-w-full overflow-hidden sm:overflow-visible font-heading font-bold leading-none tracking-[0.04em] text-2xl sm:text-5xl"
+            <!-- <h1
+              class="max-w-full overflow-hidden sm:overflow-visible font-heading font-bold leading-none tracking-[0.04em] text-2xl sm:text-4xl"
             >
               <span
                 bind:this={headlineLineEls[0]}
@@ -413,8 +432,14 @@
                 </span>
                 <span class="block text-gruvbox-fg0">for Arduino.</span>
               </span>
+            </h1> -->
+            <h1
+              class="max-w-full overflow-hidden sm:overflow-visible font-heading font-bold leading-none text-2xl sm:text-5xl"
+            >
+              An open-source AI <span class="text-gruvbox-orange">
+                coding environment
+              </span> for Arduino.
             </h1>
-
             <p
               class="mt-5 max-w-2xl text-md leading-6 sm:leading-8 text-gruvbox-muted sm:text-lg"
             >
@@ -425,7 +450,7 @@
 
             <div
               bind:this={heroActions}
-              class="mt-6 flex w-full flex-wrap justify-start gap-4"
+              class="mt-6 flex w-full flex-wrap justify-center sm:justify-start gap-4"
             >
               <a
                 href="/download"
@@ -469,7 +494,7 @@
                   <img
                     src={brand.logo}
                     alt={brand.name}
-                    class="h-4 w-auto object-contain sm:h-5 lg:h-7 xl:h-8"
+                    class="h-4 w-auto object-contain sm:h-6"
                     loading="lazy"
                   />
                 {/each}
@@ -480,12 +505,12 @@
 
         <div
           bind:this={heroScreenshotWrap}
-          class="relative z-10 grid min-w-0 w-full max-w-full xl:max-w-[64rem] xl:justify-self-end bg-gruvbox-fg0/10"
+          class="relative z-10 min-w-0 w-full xl:justify-self-end"
         >
-          <div class="w-full bg-gruvbox-bg p-2 sm:p-4">
+          <div class="relative mx-auto w-full max-w-4xl bg-gruvbox-bg p-1.5 sm:p-3">
             <AppFrame frameClass="w-full min-w-0" contentClass="p-2 sm:p-3">
               <div
-                class="relative w-full overflow-hidden"
+                class="relative aspect-[16/10] w-full overflow-hidden bg-gruvbox-ink-strong"
                 style="border-radius: 10px !important;"
               >
                 <video
@@ -496,7 +521,7 @@
                   loop
                   playsinline
                   aria-label="Exort desktop application walkthrough video"
-                  class="relative z-10 block h-auto w-full object-contain object-top [will-change:transform]"
+                  class="relative z-10 block h-full w-full object-contain object-top [will-change:transform]"
                   style="border-radius: 10px !important;"
                 >
                   <track kind="captions" />
@@ -508,8 +533,126 @@
       </div>
     </section>
 
+    <section
+      bind:this={workflowSection}
+      class="mx-auto grid max-w-7xl gap-8 px-6 pb-8 pt-16 lg:grid-cols-[minmax(0,2fr)_minmax(280px,1fr)] lg:px-8"
+    >
+      <div class="flex flex-col">
+        <div class="flex flex-col items-start">
+          <span
+            class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.24em] text-gruvbox-accent-soft sm:text-sm"
+          >
+            What is Exort
+          </span>
+          <h1
+            class="text-lg uppercase tracking-[0.24em] text-gruvbox-fg1 mt-2 max-w-xl"
+          >
+            A coding environment built for Arduino projects
+          </h1>
+          <p
+            class="mt-5 max-w-2xl text-sm leading-7 text-gruvbox-muted sm:text-base sm:leading-[1.45]"
+          >
+            Exort is an agent-driven coding environment for Arduino projects,
+            built to take ideas from code to working hardware.
+          </p>
+        </div>
+        <div
+          class="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-3"
+        >
+          {#each workflowSteps as step, index}
+            <article
+              bind:this={workflowCardEls[index]}
+              class="group relative aspect-square overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-5 transition-colors duration-300"
+            >
+              <div
+                bind:this={workflowStepEls[index]}
+                class="flex h-full flex-col justify-between rounded-2xl border border-white/6 bg-black/10 p-5 transition-all duration-300 group-hover:border-white/12"
+              >
+                <span
+                  class={`text-2xl font-heading font-semibold leading-none ${step.color}`}
+                >
+                  {step.number}
+                </span>
+
+                <p
+                  class="text-sm leading-6 text-gruvbox-fg1 sm:text-[0.96rem]"
+                >
+                  {step.description}
+                </p>
+              </div>
+            </article>
+          {/each}
+        </div>
+      </div>
+
+      <div class="flex">
+        <div
+          class="flex min-h-[280px] w-full items-center justify-center rounded-[2rem] border border-white/10 bg-white/[0.03] p-8"
+        >
+          <img
+            src="/exort-logo.png"
+            alt="Exort logo"
+            class="h-auto w-full max-w-[220px] object-contain"
+          />
+        </div>
+      </div>
+    </section>
+
     <FeaturesSection {features} />
-    <RunLocallySection />
+
+    <!-- download section -->
+    <section class="px-0 pb-16 sm:px-6 sm:pb-20 lg:px-8">
+      <div
+        class="mx-auto grid max-w-7xl gap-8 px-4 sm:p-6 lg:grid-cols-3 lg:items-center lg:gap-10 lg:p-8"
+      >
+        <div class="relative h-full min-w-0 w-full text-left">
+          <!-- <div
+            class="absolute inset-y-0 left-0 w-0.5 bg-gruvbox-green"
+            aria-hidden="true"
+          ></div> -->
+
+          <span
+            class="text-xs sm:text-sm uppercase tracking-[0.24em] text-gruvbox-green"
+          >
+            Download Exort
+          </span>
+          <h3 class="mt-2 text-sm font-semibold text-gruvbox-fg1 sm:text-xl">
+            Download Exort and start building
+          </h3>
+
+          <p
+            class="mt-5 max-w-md text-sm leading-7 text-gruvbox-muted sm:text-base sm:leading-[1.45]"
+          >
+            Exort is available for Windows, macOS, and Linux. Download the
+            latest version and get started on your next embedded project today.
+          </p>
+
+          <div
+            bind:this={heroActions}
+            class="mt-6 flex w-full flex-wrap justify-start gap-4"
+          >
+            <a
+              href="/download"
+              class="group relative inline-flex min-w-[9rem] items-center justify-center overflow-hidden rounded-full bg-gruvbox-ink px-3 sm:px-6 py-3 sm:py-3.5 text-sm font-medium backdrop-blur transition motion-reduce:transition-none"
+            >
+              <span
+                class="absolute inset-0 translate-x-full bg-gruvbox-green transition-transform duration-300 ease-out group-hover:translate-x-0"
+                aria-hidden="true"
+              >
+              </span>
+              <span
+                class="relative flex items-center gap-4 z-10 transition-colors duration-300 group-hover:text-gruvbox-ink"
+              >
+                Download Exort <ArrowUpRight class="h-4 w-4 " />
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class="min-w-0 w-full col-span-2">
+          <RunLocallySection embedded={true} />
+        </div>
+      </div>
+    </section>
 
     <!-- <DownloadSection showInstallationGuide={false} />
      -->

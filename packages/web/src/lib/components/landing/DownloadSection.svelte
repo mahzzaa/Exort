@@ -293,11 +293,11 @@
   id="try-exort"
   class="mx-auto w-full max-w-7xl px-6 pb-16 pt-4 lg:px-8 lg:pb-24"
 >
-  <div bind:this={ctaSection} class="p-4 sm:p-10 lg:p-12">
+  <div bind:this={ctaSection} class="p-4 sm:p-10 sm:pt-0 lg:pt-0 lg:p-12">
     <div
       class="flex min-h-[22rem] flex-col items-center justify-center text-center"
     >
-      <div bind:this={ctaIntroEl}>
+      <div bind:this={ctaIntroEl} class="max-w-3xl">
         <span
           class="text-sm uppercase tracking-[0.24em] text-gruvbox-accent-soft"
         >
@@ -379,7 +379,7 @@
       </div>
 
       {#if showInstallationGuide}
-        <div class="mt-32 w-full max-w-6xl text-left">
+        <div class="mt-32 w-full max-w-7xl text-left">
           <div class="mx-auto max-w-3xl text-center">
             <span
               class="text-sm uppercase tracking-[0.24em] text-gruvbox-accent-soft"
@@ -423,13 +423,19 @@
                     aria-hidden="true"
                   ></span>
                   <span
-                    class={`relative z-10 transition-colors duration-300 ${
+                    class={`relative z-10 inline-flex items-center gap-2 transition-colors duration-300 ${
                       activeInstallationGuidePlatform === "macOS"
                         ? "text-[#333231]"
                         : "text-gruvbox-muted group-hover:text-gruvbox-ink"
                     }`}
                   >
-                    macOS
+                    <span
+                      class="h-4 w-4 shrink-0 [&>svg]:h-full [&>svg]:w-full"
+                      aria-hidden="true"
+                    >
+                      {@html appleIcon}
+                    </span>
+                    <span>macOS</span>
                   </span>
                 </button>
 
@@ -455,13 +461,19 @@
                     aria-hidden="true"
                   ></span>
                   <span
-                    class={`relative z-10 transition-colors duration-300 ${
+                    class={`relative z-10 inline-flex items-center gap-2 transition-colors duration-300 ${
                       activeInstallationGuidePlatform === "Windows"
                         ? "text-[#333231]"
                         : "text-gruvbox-muted group-hover:text-gruvbox-ink"
                     }`}
                   >
-                    Windows
+                    <span
+                      class="h-4 w-4 shrink-0 [&>svg]:h-full [&>svg]:w-full"
+                      aria-hidden="true"
+                    >
+                      {@html windowsIcon}
+                    </span>
+                    <span>Windows</span>
                   </span>
                 </button>
               </div>
@@ -469,38 +481,27 @@
 
             {#if activeInstallationGuidePlatform === "macOS"}
               <div
-                class="mx-auto mt-6 w-full max-w-4xl bg-gruvbox-ink p-4 sm:p-5 text-left shadow-card-sm"
+                class="relative mx-auto mt-6 w-full max-w-4xl overflow-hidden bg-gruvbox-ink p-4 sm:p-5 text-left shadow-card-sm"
                 role="tabpanel"
               >
-                <div
-                  class="border-b items-center flex flex-col border-[rgba(235,219,178,0.1)] pb-5"
-                >
-                  <span
-                    class="text-sm uppercase tracking-[0.24em] text-gruvbox-accent-soft"
-                  >
-                    For Mac devices
-                  </span>
-                  <h4 class="mt-2 text-md font-semibold text-white sm:text-2xl">
-                    macOS
-                  </h4>
-                </div>
+                <!-- <div
+                  class="absolute inset-y-0 left-0 w-0.5 bg-gruvbox-green"
+                  aria-hidden="true"
+                ></div> -->
 
-                <div class="mt-1 sm:mt-6 space-y-5">
+                <div class=" space-y-5">
                   <section class="bg-gruvbox-bg p-4 sm:p-5">
                     <div class="flex items-start gap-4">
-                      <div
-                        class="h-6 w-6 sm:h-10 sm:w-10 shrink-0 items-center justify-center bg-gruvbox-ink text-sm font-semibold text-gruvbox-accent hidden sm:flex"
-                      >
-                        1
-                      </div>
                       <div class="min-w-0 flex-1">
-                        <div class="w-full flex items-start gap-4 sm:gap-0">
-                          <div
-                            class="flex sm:hidden h-6 w-6 sm:h-10 sm:w-10 shrink-0 items-center justify-center bg-gruvbox-ink text-sm font-semibold text-gruvbox-accent"
+                        <div class="flex w-full items-center gap-3 sm:gap-4">
+                          <span
+                            class="shrink-0 text-lg font-heading font-semibold leading-none text-gruvbox-orange"
                           >
-                            1
-                          </div>
-                          <h5 class="text-sm sm:text-lg font-medium text-white">
+                            01
+                          </span>
+                          <h5
+                            class="min-w-0 text-sm font-medium text-white sm:text-lg"
+                          >
                             Open the downloaded DMG file
                           </h5>
                         </div>
@@ -538,19 +539,16 @@
 
                   <section class="bg-gruvbox-bg p-4 sm:p-5">
                     <div class="flex items-start gap-4">
-                      <div
-                        class="h-6 w-6 sm:h-10 sm:w-10 shrink-0 items-center justify-center bg-gruvbox-ink text-sm font-semibold text-gruvbox-accent hidden sm:flex"
-                      >
-                        2
-                      </div>
                       <div class="min-w-0 flex-1">
-                        <div class="w-full flex items-start gap-4 sm:gap-0">
-                          <div
-                            class="flex sm:hidden h-6 w-6 sm:h-10 sm:w-10 shrink-0 items-center justify-center bg-gruvbox-ink text-sm font-semibold text-gruvbox-accent"
+                        <div class="flex w-full items-center gap-3 sm:gap-4">
+                          <span
+                            class="shrink-0 text-lg font-heading font-semibold leading-none text-gruvbox-orange"
                           >
-                            2
-                          </div>
-                          <h5 class="text-sm sm:text-lg font-medium text-white">
+                            02
+                          </span>
+                          <h5
+                            class="min-w-0 text-sm font-medium text-white sm:text-lg"
+                          >
                             Handle security warnings
                           </h5>
                         </div>
@@ -707,19 +705,16 @@
 
                   <section class="bg-gruvbox-bg p-4 sm:p-5">
                     <div class="flex items-start gap-4">
-                      <div
-                        class="h-6 w-6 sm:h-10 sm:w-10 shrink-0 items-center justify-center bg-gruvbox-ink text-sm font-semibold text-gruvbox-accent hidden sm:flex"
-                      >
-                        3
-                      </div>
                       <div class="min-w-0 flex-1">
-                        <div class="w-full flex items-start gap-4 sm:gap-0">
-                          <div
-                            class="flex sm:hidden h-6 w-6 sm:h-10 sm:w-10 shrink-0 items-center justify-center bg-gruvbox-ink text-sm font-semibold text-gruvbox-accent"
+                        <div class="flex w-full items-center gap-3 sm:gap-4">
+                          <span
+                            class="shrink-0 text-lg font-heading font-semibold leading-none text-gruvbox-orange"
                           >
-                            3
-                          </div>
-                          <h5 class="text-sm sm:text-lg font-medium text-white">
+                            03
+                          </span>
+                          <h5
+                            class="min-w-0 text-sm font-medium text-white sm:text-lg"
+                          >
                             Launch Exort
                           </h5>
                         </div>
@@ -742,34 +737,25 @@
               </div>
             {:else if activeInstallationGuidePlatform === "Windows"}
               <div
-                class="mx-auto mt-6 w-full max-w-4xl rounded-[1.5rem] bg-gruvbox-ink p-4 sm:p-5 text-left shadow-card-sm"
+                class="mx-auto mt-6 w-full max-w-4xl bg-gruvbox-ink p-4 sm:p-5 text-left shadow-card-sm"
                 role="tabpanel"
               >
-                <div
-                  class="border-b items-center flex flex-col border-[rgba(235,219,178,0.1)] pb-5"
-                >
-                  <span
-                    class="text-sm uppercase tracking-[0.24em] text-gruvbox-accent-soft"
-                  >
-                    For Windows devices
-                  </span>
-                  <h4 class="mt-2 text-md font-semibold text-white sm:text-2xl">
-                    Windows
-                  </h4>
-                </div>
-
-                <div class="mt-1 sm:mt-6 space-y-5">
+                <div class="space-y-5">
                   <section class="bg-gruvbox-bg p-5">
                     <div class="flex items-start gap-4">
-                      <div
-                        class="h-6 w-6 sm:h-10 sm:w-10 shrink-0 items-center justify-center bg-gruvbox-ink text-sm font-semibold text-gruvbox-accent hidden sm:flex"
-                      >
-                        1
-                      </div>
                       <div class="min-w-0 flex-1">
-                        <h5 class="text-sm sm:text-lg font-medium text-white">
-                          Run the installer
-                        </h5>
+                        <div class="flex w-full items-center gap-3 sm:gap-4">
+                          <span
+                            class="shrink-0 text-lg font-heading font-semibold leading-none text-gruvbox-orange"
+                          >
+                            01
+                          </span>
+                          <h5
+                            class="min-w-0 text-sm font-medium text-white sm:text-lg"
+                          >
+                            Run the installer
+                          </h5>
+                        </div>
                         <div
                           class="mt-0 sm:mt-3 grid gap-5 xl:grid-cols-[minmax(0,1.2fr)_minmax(18rem,1fr)] xl:items-start"
                         >
@@ -807,15 +793,19 @@
 
                   <section class="bg-gruvbox-bg p-5">
                     <div class="flex items-start gap-4">
-                      <div
-                        class="h-6 w-6 sm:h-10 sm:w-10 shrink-0 items-center justify-center bg-gruvbox-ink text-sm font-semibold text-gruvbox-accent hidden sm:flex"
-                      >
-                        2
-                      </div>
                       <div class="min-w-0 flex-1">
-                        <h5 class="text-sm sm:text-lg font-medium text-white">
-                          Bypass Windows security warnings
-                        </h5>
+                        <div class="flex w-full items-center gap-3 sm:gap-4">
+                          <span
+                            class="shrink-0 text-lg font-heading font-semibold leading-none text-gruvbox-orange"
+                          >
+                            02
+                          </span>
+                          <h5
+                            class="min-w-0 text-sm font-medium text-white sm:text-lg"
+                          >
+                            Bypass Windows security warnings
+                          </h5>
+                        </div>
                         <div
                           class="mt-0 sm:mt-3 grid gap-5 xl:grid-cols-[minmax(0,1.2fr)_minmax(18rem,1fr)] xl:items-start"
                         >
@@ -844,15 +834,19 @@
 
                   <section class="bg-gruvbox-bg p-5">
                     <div class="flex items-start gap-4">
-                      <div
-                        class="h-6 w-6 sm:h-10 sm:w-10 shrink-0 items-center justify-center bg-gruvbox-ink text-sm font-semibold text-gruvbox-accent hidden sm:flex"
-                      >
-                        3
-                      </div>
                       <div class="min-w-0 flex-1">
-                        <h5 class="text-sm sm:text-lg font-medium text-white">
-                          Complete installation
-                        </h5>
+                        <div class="flex w-full items-center gap-3 sm:gap-4">
+                          <span
+                            class="shrink-0 text-lg font-heading font-semibold leading-none text-gruvbox-orange"
+                          >
+                            03
+                          </span>
+                          <h5
+                            class="min-w-0 text-sm font-medium text-white sm:text-lg"
+                          >
+                            Complete installation
+                          </h5>
+                        </div>
                         <div
                           class="mt-3 space-y-3 text-md leading-7 text-gruvbox-muted"
                         >

@@ -9,6 +9,11 @@
     video: string;
   };
 
+  type FeatureAccent = {
+    text: string;
+    muted: string;
+  };
+
   let { features }: { features: FeatureItem[] } = $props();
 
   let prefersReducedMotion = $state(false);
@@ -18,11 +23,60 @@
   let featureVideoCurrentTime = $state(0);
   let featuresSection: HTMLElement | null = null;
   let featuresIntroEl: HTMLElement | null = null;
-  let featureSidebarEl: HTMLElement | null = null;
   let featurePanelEl: HTMLElement | null = null;
+  let featureInfoEl: HTMLElement | null = null;
   let gsapRef: Awaited<typeof import("gsap")>["gsap"] | null = null;
   const videoProgressRadius = 20;
   const videoProgressCircumference = 2 * Math.PI * videoProgressRadius;
+  const sidebarFeatureAccentByTitle: Record<string, FeatureAccent> = {
+    "Provider Connection": {
+      text: "text-gruvbox-blue",
+      muted: "text-gruvbox-blue/80",
+    },
+    "Board Manager": {
+      text: "text-gruvbox-green",
+      muted: "text-gruvbox-green/80",
+    },
+    "Serial Monitor": {
+      text: "text-gruvbox-yellow",
+      muted: "text-gruvbox-yellow/80",
+    },
+    "Serial Plotter": {
+      text: "text-gruvbox-orange",
+      muted: "text-gruvbox-orange/80",
+    },
+  };
+  const featureButtonAccentByTitle: Record<string, string> = {
+    "Provider Connection": "bg-gruvbox-blue",
+    "Board Manager": "bg-gruvbox-green",
+    "Serial Monitor": "bg-gruvbox-yellow",
+    "Serial Plotter": "bg-gruvbox-orange",
+  };
+  const featureBorderAccentByTitle: Record<string, string> = {
+    "Provider Connection": "border-gruvbox-blue/45",
+    "Board Manager": "border-gruvbox-green/45",
+    "Serial Monitor": "border-gruvbox-yellow/45",
+    "Serial Plotter": "border-gruvbox-orange/45",
+  };
+  const featureSurfaceAccentByTitle: Record<string, string> = {
+    "Provider Connection": "bg-gruvbox-blue/10",
+    "Board Manager": "bg-gruvbox-green/10",
+    "Serial Monitor": "bg-gruvbox-yellow/10",
+    "Serial Plotter": "bg-gruvbox-orange/10",
+  };
+  const featureRailAccentByTitle: Record<string, string> = {
+    "Provider Connection": "bg-gruvbox-blue",
+    "Board Manager": "bg-gruvbox-green",
+    "Serial Monitor": "bg-gruvbox-yellow",
+    "Serial Plotter": "bg-gruvbox-orange",
+  };
+  const activeFeature = $derived(features[activeFeatureIndex]);
+  const activeFeatureAccent = $derived(
+    sidebarFeatureAccentByTitle[activeFeature?.title] ?? {
+      text: "text-gruvbox-accent",
+      muted: "text-gruvbox-text/70",
+    },
+  );
 
   const remainingVideoTime = $derived.by(() =>
     Math.max(0, featureVideoDuration - featureVideoCurrentTime),
@@ -124,16 +178,13 @@
 
       const ctx = gsap.context(() => {
         gsap.set(
-          [featuresIntroEl, featureSidebarEl, featurePanelEl].filter(Boolean),
+          [featuresIntroEl, featurePanelEl, featureInfoEl].filter(Boolean),
           {
             willChange: "transform, opacity",
           },
         );
 
-        if (
-          featuresSection &&
-          (featuresIntroEl || featureSidebarEl || featurePanelEl)
-        ) {
+        if (featuresSection && (featuresIntroEl || featurePanelEl)) {
           const featuresTimeline = gsap.timeline({
             defaults: {
               duration: 0.75,
@@ -169,14 +220,14 @@
             );
           }
 
-          if (featureSidebarEl) {
+          if (featureInfoEl) {
             featuresTimeline.from(
-              featureSidebarEl,
+              featureInfoEl,
               {
                 x: 40,
                 opacity: 0,
               },
-              0.2,
+              0.18,
             );
           }
         }
@@ -199,9 +250,9 @@
 <section
   id="features"
   bind:this={featuresSection}
-  class="mx-auto max-w-6xl px-6 py-16 lg:px-8 lg:py-24"
+  class="mx-auto max-w-7xl px-6 py-14 lg:px-8 lg:py-24"
 >
-  <div bind:this={featuresIntroEl} class="flex w-full justify-center">
+  <div bind:this={featuresIntroEl} class="flex w-full justify-start">
     <span class="text-sm uppercase tracking-[0.24em] text-gruvbox-accent-soft">
       Core Features
     </span>
@@ -209,9 +260,9 @@
 
   <div class="mt-12">
     <div
-      class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-center lg:gap-8"
+      class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-stretch lg:gap-8"
     >
-      <div bind:this={featurePanelEl} class="min-w-0">
+      <div bind:this={featurePanelEl} class="order-2 min-w-0 lg:order-1">
         <div class="grid gap-6">
           <div class="relative mx-auto w-full max-w-4xl">
             <AppFrame contentClass="p-2 sm:p-3" showIndicator={true}>
@@ -254,7 +305,7 @@
                 </div>
               {/snippet}
               <div
-                class="group/feature-video relative aspect-[16/10] w-full overflow-hidden bg-gruvbox-ink-strong"
+                class="relative aspect-[16/10] w-full overflow-hidden bg-gruvbox-ink-strong"
                 aria-label={`${features[activeFeatureIndex].title} feature preview`}
                 style="border-radius: 10px !important;"
               >
@@ -280,93 +331,79 @@
                     ></video>
                   </div>
                 {/key}
-                <div
-                  class="pointer-events-none absolute inset-0 translate-x-full bg-feature-overlay opacity-0 backdrop-blur-md transition-[transform,opacity] duration-300 ease-out group-hover/feature-video:translate-x-0 group-hover/feature-video:opacity-100 motion-reduce:translate-x-0 motion-reduce:transition-none"
-                  aria-hidden="true"
-                ></div>
-                <div
-                  class="pointer-events-none absolute inset-0 flex items-center justify-center p-4 sm:p-6"
-                >
-                  <div
-                    class="w-full max-w-sm translate-x-10 opacity-0 transition-[transform,opacity] duration-300 ease-out group-hover/feature-video:translate-x-0 group-hover/feature-video:opacity-100 motion-reduce:translate-x-0 motion-reduce:opacity-100 motion-reduce:transition-none"
-                  >
-                    <div
-                      class="aspect-square bg-gruvbox-ink px-5 py-4 shadow-card-md backdrop-blur-sm sm:px-6 sm:py-5"
-                    >
-                      <div
-                        class="relative flex h-full flex-col items-start justify-center text-start"
-                      >
-                        <p
-                          class="absolute top-10 left-0 text-[0.68rem] uppercase tracking-[0.34em] text-gruvbox-accent-soft"
-                        >
-                          Active Capability
-                        </p>
-                        <h3
-                          class=" text-2xl font-light tracking-[-0.04em] text-gruvbox-fg0 sm:text-3xl"
-                        >
-                          {features[activeFeatureIndex].title}
-                        </h3>
-                        <p
-                          class="mt-4 text-sm leading-7 text-gruvbox-fg1 sm:text-base text-start"
-                        >
-                          {features[activeFeatureIndex].description}
-                        </p>
-                        <img
-                          src="/exort-logo.png"
-                          alt=""
-                          aria-hidden="true"
-                          class="absolute bottom-0 right-0 h-9 w-9 object-contain"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
             </AppFrame>
+          </div>
+
+          <div class="flex items-center justify-center gap-2.5">
+            {#each features as _, index}
+              <button
+                type="button"
+                aria-label={`Show feature ${index + 1}`}
+                aria-pressed={index === activeFeatureIndex}
+                class={`h-0.5 w-4 rounded-full transition-colors ${
+                  index === activeFeatureIndex
+                    ? (featureButtonAccentByTitle[features[index]?.title] ??
+                      "bg-gruvbox-accent")
+                    : "bg-gruvbox-muted/55"
+                }`}
+                onclick={() => setActiveFeature(index)}
+              ></button>
+            {/each}
           </div>
         </div>
       </div>
 
-      <div class="mt-1.5 flex items-center justify-center gap-2.5 lg:hidden">
-        {#each features as _, index}
-          <button
-            type="button"
-            aria-label={`Show feature ${index + 1}`}
-            aria-pressed={index === activeFeatureIndex}
-            class={`h-0.5 w-4 rounded-full transition-colors ${
-              index === activeFeatureIndex
-                ? "bg-gruvbox-accent"
-                : "bg-gruvbox-muted/70"
-            }`}
-            onclick={() => setActiveFeature(index)}
-          ></button>
-        {/each}
-      </div>
-
-      <aside bind:this={featureSidebarEl} class="hidden lg:block">
-        <div class="sticky top-24 space-y-3">
-          {#each features as feature, index}
-            <button
-              type="button"
-              class={`group relative w-full bg-transparent py-[0.7rem] pr-[14px] text-right text-base font-light leading-[1.35] transition-[color,transform,opacity] duration-200 ease-out motion-reduce:transition-none ${
-                index === activeFeatureIndex
-                  ? "font-semibold text-gruvbox-accent "
-                  : "text-gruvbox-muted hover:-translate-x-1 hover:text-gruvbox-text"
-              }`}
-              onclick={() => setActiveFeature(index)}
-              aria-pressed={index === activeFeatureIndex}
-            >
-              <span
-                class={`absolute right-0 top-1/2 h-1.5 w-px -translate-y-1/2 transition-opacity duration-200 ease-out motion-reduce:transition-none ${
+      <aside
+        bind:this={featureInfoEl}
+        class="order-1 min-w-0 lg:order-2 lg:pr-2"
+      >
+        <div class="relative h-fit overflow-hidden">
+          <div class="flex flex-col space-y-2">
+            {#each features as feature, index}
+              <button
+                type="button"
+                aria-pressed={index === activeFeatureIndex}
+                class={`relative overflow-hidden px-4 py-2 text-left transition duration-200 ${
                   index === activeFeatureIndex
-                    ? "bg-current opacity-100"
-                    : "bg-current opacity-70"
+                    ? "block w-full"
+                    : "hidden w-full lg:block"
+                } ${
+                  index === activeFeatureIndex
+                    ? `${featureBorderAccentByTitle[feature.title] ?? "border-gruvbox-accent/45"} ${featureSurfaceAccentByTitle[feature.title] ?? "bg-gruvbox-accent/10"}`
+                    : " bg-gruvbox-bg0/15 hover:bg-gruvbox-bg0/30"
                 }`}
-                aria-hidden="true"
-              ></span>
-              {feature.title}
-            </button>
-          {/each}
+                onclick={() => setActiveFeature(index)}
+              >
+                <div
+                  class={`absolute inset-y-0 left-0 w-0.5 ${
+                    featureRailAccentByTitle[feature.title] ??
+                    "bg-gruvbox-accent"
+                  }`}
+                  aria-hidden="true"
+                ></div>
+                <div class="flex items-start gap-4">
+                  <div class="min-w-0 space-y-2">
+                    <h3
+                      class={`text-base sm:text-xl font-semibold font-heading ${
+                        index === activeFeatureIndex
+                          ? (sidebarFeatureAccentByTitle[feature.title]?.text ??
+                            "text-gruvbox-accent")
+                          : "text-gruvbox-fg1"
+                      }`}
+                    >
+                      {feature.title}
+                    </h3>
+                    <p
+                      class="text-sm leading-6 sm:leading-7 text-gruvbox-text/85"
+                    >
+                      {feature.description}
+                    </p>
+                  </div>
+                </div>
+              </button>
+            {/each}
+          </div>
         </div>
       </aside>
     </div>

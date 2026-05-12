@@ -1,6 +1,13 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { Copy, CopyCheck } from "lucide-svelte";
+  let {
+    embedded = false,
+    className = "",
+  }: {
+    embedded?: boolean;
+    className?: string;
+  } = $props();
 
   const localSetupCommands = [
     {
@@ -164,23 +171,32 @@
   });
 </script>
 
-<div class="px-4 sm:px-6 lg:px-8">
+<div
+  class={`min-w-0 w-full ${embedded ? "" : "px-4 sm:px-6 lg:px-8"} ${className}`.trim()}
+>
   <div
     bind:this={localSetupPanelEl}
-    class="mx-auto mt-8 sm:mt-10 mb-16 w-full max-w-4xl rounded-[1.5rem] border border-[rgba(235,219,178,0.08)] bg-gruvbox-ink p-5 text-left shadow-card-sm"
+    class={`relative min-w-0 w-full p-5 bg-gruvbox-ink text-left shadow-card-sm ${
+      embedded ? "" : "mx-auto mt-8 mb-16 max-w-4xl sm:mt-10"
+    }`.trim()}
   >
+    <!-- <div
+      class="pointer-events-none absolute left-0 top-0 h-full w-0.5 bg-gruvbox-accent-soft"
+      aria-hidden="true"
+    ></div> -->
+
     <div
       bind:this={localSetupHeaderEl}
       class="relative gap-3 pb-4 md:flex-row md:items-end md:justify-between"
     >
       <div>
-        <span
+        <!-- <span
           class="text-xs sm:text-sm uppercase tracking-[0.24em] text-gruvbox-accent-soft"
         >
-          Run Exort Locally
-        </span>
-        <h3 class="mt-2 text-sm font-semibold text-white sm:text-2xl">
-          Clone the repo and run Exort locally
+          Clone Exort
+        </span> -->
+        <h3 class="mt-2 text-sm font-semibold text-gruvbox-fg1 sm:text-xl">
+          Clone Exort and run it locally
         </h3>
       </div>
 
