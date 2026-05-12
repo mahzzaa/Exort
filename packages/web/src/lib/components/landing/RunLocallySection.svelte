@@ -172,10 +172,10 @@
 </script>
 
 <div
-  class={`min-w-0 w-full  ${embedded ? "" : "mx-auto max-w-7xl px-6 lg:px-8"} ${className}`.trim()}
+  class={`min-w-0 w-full ${embedded ? "" : "mx-auto max-w-7xl px-6 lg:px-8"} ${className}`.trim()}
 >
   <div
-    class={`${embedded ? "" : "pt-0 p-4 sm:p-10 sm:pt-0 lg:p-12 lg:pt-0"}`.trim()}
+    class={`${embedded ? "" : "p-4 sm:p-10 sm:pt-0 lg:p-12 lg:pt-0"}`.trim()}
   >
     <div
       bind:this={localSetupPanelEl}

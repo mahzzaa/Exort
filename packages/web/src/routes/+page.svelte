@@ -343,7 +343,7 @@
   />
 </svelte:head>
 
-<div class="relative isolate min-h-screen bg-gruvbox-bg text-gruvbox-text">
+<div class="relative isolate">
   <SiteNav />
 
   <main id="top">
@@ -635,23 +635,4 @@
     <!-- <DownloadSection showInstallationGuide={false} />
      -->
   </main>
-
-  <footer class="bg-gruvbox-surface">
-    <div
-      class="mx-auto flex justify-between max-w-7xl gap-4 px-6 py-6 sm:py-8 text-sm text-gruvbox-muted sm:flex-row sm:items-center sm:justify-between lg:px-8"
-    >
-      <p>
-        Made with love by
-        <a
-          href="https://github.com/Razz19"
-          target="_blank"
-          rel="noreferrer"
-          class="text-gruvbox-text transition-colors duration-200 hover:text-gruvbox-accent motion-reduce:transition-none"
-        >
-          Razz19
-        </a>
-      </p>
-      <p>AGPL-3.0-only</p>
-    </div>
-  </footer>
 </div>
