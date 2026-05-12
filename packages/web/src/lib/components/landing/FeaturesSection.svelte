@@ -132,6 +132,11 @@
       : 0;
   };
 
+  const syncFeatureVideoState = () => {
+    syncFeatureVideoDuration();
+    syncFeatureVideoProgress();
+  };
+
   const formatRemainingTime = (seconds: number) => {
     const roundedSeconds = Math.max(0, Math.ceil(seconds));
     const minutes = Math.floor(roundedSeconds / 60);
@@ -149,6 +154,36 @@
     gsapRef = gsap;
     return gsap;
   };
+
+  $effect(() => {
+    const video = featureVideoEl;
+    activeFeatureIndex;
+
+    if (!video || typeof window === "undefined") {
+      return;
+    }
+
+    const sync = () => {
+      if (featureVideoEl === video) {
+        syncFeatureVideoState();
+      }
+    };
+
+    sync();
+
+    const rafId = window.requestAnimationFrame(sync);
+
+    video.addEventListener("loadedmetadata", sync);
+    video.addEventListener("loadeddata", sync);
+    video.addEventListener("canplay", sync);
+
+    return () => {
+      window.cancelAnimationFrame(rafId);
+      video.removeEventListener("loadedmetadata", sync);
+      video.removeEventListener("loadeddata", sync);
+      video.removeEventListener("canplay", sync);
+    };
+  });
 
   onMount(() => {
     if (typeof window === "undefined") {
@@ -321,7 +356,9 @@
                       aria-label={`${features[activeFeatureIndex].title} demo video`}
                       class="block h-full w-full object-contain object-top"
                       autoplay
+                      onloadeddata={syncFeatureVideoState}
                       onloadedmetadata={syncFeatureVideoDuration}
+                      oncanplay={syncFeatureVideoState}
                       ondurationchange={syncFeatureVideoDuration}
                       ontimeupdate={syncFeatureVideoProgress}
                       onended={handleFeatureVideoEnded}

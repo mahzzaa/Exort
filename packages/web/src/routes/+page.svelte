@@ -359,7 +359,7 @@
             class="flex w-full max-w-4xl flex-col items-start text-left lg:max-w-[44rem]"
           >
             <!-- <h1
-              class="max-w-full overflow-hidden sm:overflow-visible font-heading font-bold leading-none tracking-[0.04em] text-2xl sm:text-4xl"
+              class="max-w-full overflow-hidden sm:overflow-visible font-heading font-bold leading-none tracking-[0.04em] text-2xl sm:text-5xl"
             >
               <span
                 bind:this={headlineLineEls[0]}
@@ -368,8 +368,8 @@
                 <span
                   class="relative block w-full max-w-full overflow-visible align-top pb-[0.08em] leading-[1.08]"
                 >
-                  <span class="block text-gruvbox-fg0 sm:whitespace-nowrap"
-                    >An open-source AI</span
+                  <span class="block text-gruvbox-fg0 sm:whitespace-nowrap">
+                    AI-powered</span
                   >
                 </span>
               </span>
@@ -386,48 +386,49 @@
                     <span
                       class="col-start-1 row-start-1 text-transparent sm:whitespace-nowrap"
                     >
-                      coding environment
+                      coding <br class="hidden lg:block" /> environment
                     </span>
                     <span
                       class="pointer-events-none col-start-1 row-start-1 text-gruvbox-fg0 sm:whitespace-nowrap"
                     >
-                      coding environment
+                      coding <br class="hidden lg:block" /> environment
                     </span>
                     <span
                       class="pointer-events-none col-start-1 row-start-1 pb-[0.12em] -mb-[0.12em] text-gruvbox-orange [clip-path:inset(0_100%_0_0)] opacity-0 motion-reduce:hidden animate-hero-text-sweep-right sm:whitespace-nowrap"
                       aria-hidden="true"
                     >
-                      coding environment
+                      coding <br class="hidden lg:block" /> environment
                     </span>
                     <span
                       class="pointer-events-none col-start-1 row-start-1 pb-[0.12em] -mb-[0.12em] text-gruvbox-green [clip-path:inset(0_0_0_100%)] opacity-0 motion-reduce:hidden animate-hero-text-sweep-left [animation-delay:1.5s] sm:whitespace-nowrap"
                       aria-hidden="true"
                     >
-                      coding environment
+                      coding <br class="hidden lg:block" /> environment
                     </span>
                     <span
                       class="pointer-events-none col-start-1 row-start-1 pb-[0.12em] -mb-[0.12em] text-gruvbox-blue [clip-path:inset(0_100%_0_0)] opacity-0 motion-reduce:hidden animate-hero-text-sweep-right [animation-delay:3s] sm:whitespace-nowrap"
                       aria-hidden="true"
                     >
-                      coding environment
+                      coding <br class="hidden lg:block" /> environment
                     </span>
                     <span
                       class="pointer-events-none col-start-1 row-start-1 pb-[0.12em] -mb-[0.12em] text-gruvbox-yellow [clip-path:inset(0_0_0_100%)] opacity-0 motion-reduce:hidden animate-hero-text-sweep-left [animation-delay:4.5s] sm:whitespace-nowrap"
                       aria-hidden="true"
                     >
-                      coding environment
+                      coding <br class="hidden lg:block" /> environment
                     </span>
                   </span>
                 </span>
-                <span class="block text-gruvbox-fg0">for Arduino.</span>
+                <span class="block text-gruvbox-fg0">for Microcontrollers.</span
+                >
               </span>
             </h1> -->
             <h1
-              class="max-w-full overflow-hidden sm:overflow-visible font-heading font-bold leading-none text-2xl sm:text-5xl"
+              class="max-w-full overflow-hidden sm:overflow-visible font-heading font-bold leading-none text-2xl sm:text-4xl"
             >
-              An open-source AI <span class="text-gruvbox-orange">
+              Open-source AI <span class="hero-gruvbox-text-cycle">
                 coding environment
-              </span> for Arduino.
+              </span> for Microcontrollers.
             </h1>
             <p
               class="mt-5 max-w-2xl text-md leading-6 sm:leading-8 text-gruvbox-muted sm:text-lg"
@@ -566,9 +567,7 @@
                 {step.number}
               </span>
 
-              <p
-                class="mt-auto text-sm leading-6 text-gruvbox-fg1 sm:text-[0.92rem]"
-              >
+              <p class=" text-sm leading-6 text-gruvbox-fg1 sm:text-[0.92rem]">
                 {step.description}
               </p>
             </div>
@@ -637,3 +636,36 @@
      -->
   </main>
 </div>
+
+<style>
+  .hero-gruvbox-text-cycle {
+    color: #fe8019;
+    animation: hero-gruvbox-text-cycle 6s ease-in-out infinite;
+  }
+
+  @keyframes hero-gruvbox-text-cycle {
+    0%,
+    100% {
+      color: #fe8019;
+    }
+
+    25% {
+      color: #98971a;
+    }
+
+    50% {
+      color: #458588;
+    }
+
+    75% {
+      color: #fabd2f;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-gruvbox-text-cycle {
+      animation: none;
+      color: #fe8019;
+    }
+  }
+</style>
