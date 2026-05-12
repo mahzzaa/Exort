@@ -16,7 +16,13 @@
   <SiteNav />
   <main class="flex w-full flex-col items-stretch pt-8 sm:pt-12">
     <DownloadSection />
-    <!-- <p class="text-gruvbox-fg1">OR</p> -->
-    <RunLocallySection />
+    <div class="mx-auto mt-16 w-full max-w-7xl px-6 lg:px-8">
+      <p
+        class="text-sm uppercase text-center tracking-[0.24em] text-gruvbox-accent-soft w-full"
+      >
+        Clone Exort
+      </p>
+      <RunLocallySection />
+    </div>
   </main>
 </div>

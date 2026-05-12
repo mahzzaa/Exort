@@ -291,7 +291,7 @@
 
 <section
   id="try-exort"
-  class="mx-auto w-full max-w-7xl px-6 pb-16 pt-4 lg:px-8 lg:pb-24"
+  class="mx-auto w-full max-w-7xl px-6 pb-6 pt-4 lg:px-8 lg:pb-10"
 >
   <div bind:this={ctaSection} class="p-4 sm:p-10 sm:pt-0 lg:pt-0 lg:p-12">
     <div
@@ -303,7 +303,7 @@
         >
           Get Exort
         </span>
-        <h2 class="mt-3 text-md font-semibold text-white sm:text-4xl">
+        <h2 class="mt-3 text-md font-semibold text-gruvbox-fg0 sm:text-4xl">
           Let&apos;s get Exort running on your setup
         </h2>
         <p class="mt-4 text-sm sm:text-base leading-8 text-gruvbox-muted">
@@ -386,7 +386,7 @@
             >
               Installation Guide
             </span>
-            <h3 class="mt-3 text-md font-semibold text-white sm:text-3xl">
+            <h3 class="mt-3 text-md font-semibold text-gruvbox-fg0 sm:text-3xl">
               Follow these steps to install Exort on your computer
             </h3>
             <p class="mt-4 text-sm sm:text-base leading-8 text-gruvbox-muted">
@@ -492,15 +492,17 @@
                 <div class=" space-y-5">
                   <section class="bg-gruvbox-bg p-4 sm:p-5">
                     <div class="flex items-start gap-4">
-                      <div class="min-w-0 flex-1">
-                        <div class="flex w-full items-center gap-3 sm:gap-4">
+                      <div class="min-w-0 flex-1 space-y-2">
+                        <div
+                          class="flex w-full items-start sm:items-center gap-3 sm:gap-4"
+                        >
                           <span
                             class="shrink-0 text-lg font-heading font-semibold leading-none text-gruvbox-orange"
                           >
                             01
                           </span>
                           <h5
-                            class="min-w-0 text-sm font-medium text-white sm:text-lg"
+                            class="min-w-0 text-xs font-medium text-gruvbox-fg0 sm:text-lg"
                           >
                             Open the downloaded DMG file
                           </h5>
@@ -510,13 +512,14 @@
                         >
                           <div class="min-w-0">
                             <div
-                              class="space-y-3 text-sm sm:text-md leading-7 text-gruvbox-muted"
+                              class="space-y-3 text-sm sm:text-lg leading-7 text-gruvbox-muted"
                             >
                               <p>
                                 - Locate the downloaded Exort dmg file and
                                 double-click to open it.
+                                <br />
+                                - Drag Exort to Applications to install.
                               </p>
-                              <p>- Drag Exort to Applications to install.</p>
                             </div>
                           </div>
 
@@ -539,15 +542,17 @@
 
                   <section class="bg-gruvbox-bg p-4 sm:p-5">
                     <div class="flex items-start gap-4">
-                      <div class="min-w-0 flex-1">
-                        <div class="flex w-full items-center gap-3 sm:gap-4">
+                      <div class="min-w-0 flex-1 space-y-2">
+                        <div
+                          class="flex w-full items-start sm:items-center gap-3 sm:gap-4"
+                        >
                           <span
                             class="shrink-0 text-lg font-heading font-semibold leading-none text-gruvbox-orange"
                           >
                             02
                           </span>
                           <h5
-                            class="min-w-0 text-sm font-medium text-white sm:text-lg"
+                            class="min-w-0 text-xs font-medium text-gruvbox-fg0 sm:text-lg"
                           >
                             Handle security warnings
                           </h5>
@@ -564,7 +569,7 @@
                               Notice
                             </p>
                             <div
-                              class="mt-2 space-y-2 text-sm leading-7 text-gruvbox-muted italic"
+                              class="mt-2 space-y-2 text-sm sm:text-lg leading-7 text-gruvbox-muted italic"
                             >
                               <p>
                                 You're gonna see security warnings because Exort
@@ -578,27 +583,25 @@
                         <div class="mt-5 space-y-4">
                           <div class="bg-gruvbox-ink p-4">
                             <div class="flex items-start gap-3">
-                              <div class="min-w-0 flex-1">
+                              <div class="min-w-0 flex-1 space-y-2">
                                 <h6
-                                  class="text-sm sm:text-base font-medium text-white"
+                                  class="text-sm sm:text-base font-medium text-gruvbox-fg0"
                                 >
                                   If you see "Exort is damaged" error
                                 </h6>
                                 <div
-                                  class="mt-0 sm:mt-0 sm:mt-3 grid gap-4 xl:grid-cols-[minmax(0,1.2fr)_minmax(17rem,1fr)] xl:items-start"
+                                  class="mt-0 grid gap-4 xl:grid-cols-[minmax(0,1.2fr)_minmax(17rem,1fr)] xl:items-start"
                                 >
                                   <div class="min-w-0">
                                     <div
-                                      class="space-y-3 text-sm sm:text-md leading-7 text-gruvbox-muted mt-2 sm:mt-10"
+                                      class="space-y-3 text-sm sm:text-lg leading-7 text-gruvbox-muted"
                                     >
                                       <p>
-                                        Open Terminal (Command + Spacebar to
+                                        - Open Terminal (Command + Spacebar to
                                         launch Spotlight, type "Terminal", and
                                         hit Enter)
-                                      </p>
-                                      <p>
-                                        Run the command below to remove the
-                                        quarantine
+                                        <br />
+                                        - Run the command below to remove the quarantine
                                       </p>
                                     </div>
                                   </div>
@@ -619,7 +622,7 @@
                                 <div class="mt-4">
                                   <div class="relative">
                                     <pre
-                                      class={`m-0 overflow-x-auto bg-gruvbox-ink-strong px-[0.85rem] py-[0.72rem] pr-14 text-[0.88rem] leading-[1.45] transition-colors duration-200 ${
+                                      class={`m-0 overflow-x-auto bg-gruvbox-ink-strong h-9 flex items-center justify-start px-[0.85rem] py-0 sm:py-[0.72rem] pr-14 text-[0.88rem] leading-[1.45] transition-colors duration-200 ${
                                         copiedCommandKey === "mac-security"
                                           ? "text-gruvbox-orange"
                                           : "text-gruvbox-fg0"
@@ -627,7 +630,7 @@
                                       ></pre>
                                     <button
                                       type="button"
-                                      class={`absolute right-[0.6rem] top-1/2 inline-flex h-9 w-9 -translate-y-1/2 items-center justify-center bg-transparent p-2 transition-colors duration-200 focus-visible:outline-none motion-reduce:transition-none ${
+                                      class={`absolute right-0 sm:right-[0.6rem] top-1/2 inline-flex h-9 w-9 -translate-y-1/2 items-center justify-center  bg-gruvbox-nav sm:bg-transparent p-2 transition-colors duration-200 focus-visible:outline-none motion-reduce:transition-none ${
                                         copiedCommandKey === "mac-security"
                                           ? "text-gruvbox-orange"
                                           : "text-gruvbox-fg1 hover:text-gruvbox-orange focus-visible:text-gruvbox-orange"
@@ -659,9 +662,9 @@
 
                           <div class="bg-gruvbox-ink p-4 mt-10">
                             <div class="flex items-start gap-3">
-                              <div class="min-w-0 flex-1">
+                              <div class="min-w-0 flex-1 space-y-2">
                                 <h6
-                                  class="text-sm sm:text-base font-medium text-white"
+                                  class="text-sm sm:text-base font-medium text-gruvbox-fg0"
                                 >
                                   If you see "Developer cannot be verified"
                                   error
@@ -671,16 +674,16 @@
                                 >
                                   <div class="min-w-0">
                                     <div
-                                      class="space-y-3 text-sm sm:text-md leading-7 text-gruvbox-muted mt-2 sm:mt-10"
+                                      class="space-y-3 text-sm sm:text-lg leading-7 text-gruvbox-muted"
                                     >
-                                      <p>Click "Cancel" on the error dialog.</p>
                                       <p>
-                                        Go to System Preferences → Security &
-                                        Privacy → General.
-                                      </p>
-                                      <p>
-                                        Click Open Anyway next to the blocked
-                                        app message.
+                                        - Click "Cancel" on the error dialog.
+                                        <br />
+                                        - Go to System Preferences → Security & Privacy
+                                        → General.
+                                        <br />
+                                        - Click Open Anyway next to the blocked app
+                                        message.
                                       </p>
                                     </div>
                                   </div>
@@ -705,29 +708,30 @@
 
                   <section class="bg-gruvbox-bg p-4 sm:p-5">
                     <div class="flex items-start gap-4">
-                      <div class="min-w-0 flex-1">
-                        <div class="flex w-full items-center gap-3 sm:gap-4">
+                      <div class="min-w-0 flex-1 space-y-2">
+                        <div
+                          class="flex w-full items-start sm:items-center gap-3 sm:gap-4"
+                        >
                           <span
                             class="shrink-0 text-lg font-heading font-semibold leading-none text-gruvbox-orange"
                           >
                             03
                           </span>
                           <h5
-                            class="min-w-0 text-sm font-medium text-white sm:text-lg"
+                            class="min-w-0 text-xs font-medium text-gruvbox-fg0 sm:text-lg"
                           >
                             Launch Exort
                           </h5>
                         </div>
                         <div
-                          class="mt-3 space-y-3 text-sm sm:text-md leading-7 text-gruvbox-muted"
+                          class="mt-3 text-sm sm:text-lg leading-7 text-gruvbox-muted"
                         >
                           <p>
                             You can now open Exort from the Applications folder
                             or spotlight.
-                          </p>
-                          <p>
-                            The app will now run normally without any more
-                            security warnings.
+                            <br />
+                            The app will now run normally without any more security
+                            warnings.
                           </p>
                         </div>
                       </div>
@@ -743,15 +747,17 @@
                 <div class="space-y-5">
                   <section class="bg-gruvbox-bg p-5">
                     <div class="flex items-start gap-4">
-                      <div class="min-w-0 flex-1">
-                        <div class="flex w-full items-center gap-3 sm:gap-4">
+                      <div class="min-w-0 flex-1 space-y-2">
+                        <div
+                          class="flex w-full items-start sm:items-center gap-3 sm:gap-4"
+                        >
                           <span
                             class="shrink-0 text-lg font-heading font-semibold leading-none text-gruvbox-orange"
                           >
                             01
                           </span>
                           <h5
-                            class="min-w-0 text-sm font-medium text-white sm:text-lg"
+                            class="min-w-0 text-xs font-medium text-gruvbox-fg0 sm:text-lg"
                           >
                             Run the installer
                           </h5>
@@ -761,17 +767,15 @@
                         >
                           <div class="min-w-0">
                             <div
-                              class="space-y-3 text-sm sm:text-md leading-7 text-gruvbox-muted mt-2 sm:mt-3 xl:mt-10"
+                              class="space-y-3 text-sm sm:text-lg leading-7 text-gruvbox-muted"
                             >
                               <p>
-                                Locate the downloaded Exort.exe file and
+                                - Locate the downloaded Exort.exe file and
                                 double-click to run it.
-                              </p>
-                              <p>
-                                You will encounter a Windows security warning
-                              </p>
-                              <p>
-                                Click "More info" to proceed with installation.
+                                <br />
+                                - You will encounter a Windows security warning
+                                <br />
+                                - Click "More info" to proceed with installation.
                               </p>
                             </div>
                           </div>
@@ -793,15 +797,17 @@
 
                   <section class="bg-gruvbox-bg p-5">
                     <div class="flex items-start gap-4">
-                      <div class="min-w-0 flex-1">
-                        <div class="flex w-full items-center gap-3 sm:gap-4">
+                      <div class="min-w-0 flex-1 space-y-2">
+                        <div
+                          class="flex w-full items-start sm:items-center gap-3 sm:gap-4"
+                        >
                           <span
                             class="shrink-0 text-lg font-heading font-semibold leading-none text-gruvbox-orange"
                           >
                             02
                           </span>
                           <h5
-                            class="min-w-0 text-sm font-medium text-white sm:text-lg"
+                            class="min-w-0 text-xs font-medium text-gruvbox-fg0 sm:text-lg"
                           >
                             Bypass Windows security warnings
                           </h5>
@@ -811,10 +817,10 @@
                         >
                           <div class="min-w-0">
                             <div
-                              class="space-y-3 text-sm sm:text-md leading-7 text-gruvbox-muted mt-2 sm:mt-3 xl:mt-10"
+                              class="space-y-3 text-sm sm:text-lg leading-7 text-gruvbox-muted"
                             >
                               <p>
-                                On the next window, click "Run anyway" to
+                                - On the next window, click "Run anyway" to
                                 proceed with installation.
                               </p>
                             </div>
@@ -834,15 +840,17 @@
 
                   <section class="bg-gruvbox-bg p-5">
                     <div class="flex items-start gap-4">
-                      <div class="min-w-0 flex-1">
-                        <div class="flex w-full items-center gap-3 sm:gap-4">
+                      <div class="min-w-0 flex-1 space-y-2">
+                        <div
+                          class="flex w-full items-start sm:items-center gap-3 sm:gap-4"
+                        >
                           <span
                             class="shrink-0 text-lg font-heading font-semibold leading-none text-gruvbox-orange"
                           >
                             03
                           </span>
                           <h5
-                            class="min-w-0 text-sm font-medium text-white sm:text-lg"
+                            class="min-w-0 text-xs font-medium text-gruvbox-fg0 sm:text-lg"
                           >
                             Complete installation
                           </h5>
@@ -851,13 +859,12 @@
                           class="mt-3 space-y-3 text-md leading-7 text-gruvbox-muted"
                         >
                           <p>
-                            Follow the installer steps to complete the
+                            - Follow the installer steps to complete the
                             installation of Exort on your machine.
-                          </p>
-                          <p>
-                            You won’t see any more security warnings after this,
-                            and you can launch Exort from the Start menu or
-                            desktop shortcut.
+                            <br />
+                            - You won’t see any more security warnings after this,
+                            and you can launch Exort from the Start menu or desktop
+                            shortcut.
                           </p>
                         </div>
                       </div>

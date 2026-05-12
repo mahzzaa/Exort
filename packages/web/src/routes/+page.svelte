@@ -119,8 +119,10 @@
     let mobileHeroHighlightIndex = 0;
 
     const applyMobileHeroHighlightGroup = (groupIndex: number) => {
-      const firstHighlightEl = mobileHeroHighlightFirst as HTMLParagraphElement | null;
-      const secondHighlightEl = mobileHeroHighlightSecond as HTMLParagraphElement | null;
+      const firstHighlightEl =
+        mobileHeroHighlightFirst as HTMLParagraphElement | null;
+      const secondHighlightEl =
+        mobileHeroHighlightSecond as HTMLParagraphElement | null;
 
       if (!firstHighlightEl || !secondHighlightEl) {
         return;
@@ -230,7 +232,6 @@
             heroHighlightsWrap,
             heroScreenshotWrap,
             ...workflowCardEls,
-            ...workflowStepEls,
           ].filter(Boolean),
           {
             willChange: "transform, opacity",
@@ -287,32 +288,20 @@
 
         if (workflowCardEls.length) {
           gsap.from(workflowCardEls, {
-            y: 26,
+            y: 16,
             opacity: 0,
-            duration: 0.85,
-            stagger: 0.1,
-            ease: "power2.out",
+            duration: 0.46,
+            stagger: 0.06,
+            ease: "power3.out",
             scrollTrigger: {
               trigger: workflowSection,
-              start: "top 72%",
+              start: "top 82%",
               once: true,
             },
           });
         }
 
         workflowStepEls.forEach((stepEl) => {
-          gsap.from(stepEl, {
-            y: 22,
-            opacity: 0,
-            duration: 0.72,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: stepEl,
-              start: "top 82%",
-              once: true,
-            },
-          });
-
           ScrollTrigger.create({
             trigger: stepEl,
             start: "top 75%",
@@ -507,7 +496,9 @@
           bind:this={heroScreenshotWrap}
           class="relative z-10 min-w-0 w-full xl:justify-self-end"
         >
-          <div class="relative mx-auto w-full max-w-4xl bg-gruvbox-bg p-1.5 sm:p-3">
+          <div
+            class="relative mx-auto w-full max-w-4xl bg-gruvbox-bg p-1.5 sm:p-3"
+          >
             <AppFrame frameClass="w-full min-w-0" contentClass="p-2 sm:p-3">
               <div
                 class="relative aspect-[16/10] w-full overflow-hidden bg-gruvbox-ink-strong"
@@ -535,66 +526,53 @@
 
     <section
       bind:this={workflowSection}
-      class="mx-auto grid max-w-7xl gap-8 px-6 pb-8 pt-16 lg:grid-cols-[minmax(0,2fr)_minmax(280px,1fr)] lg:px-8"
+      class="mx-auto grid max-w-7xl gap-10 px-6 pb-8 pt-16 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:items-start lg:px-8"
     >
-      <div class="flex flex-col">
-        <div class="flex flex-col items-start">
-          <span
-            class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.24em] text-gruvbox-accent-soft sm:text-sm"
-          >
-            What is Exort
-          </span>
-          <h1
-            class="text-lg uppercase tracking-[0.24em] text-gruvbox-fg1 mt-2 max-w-xl"
-          >
-            A coding environment built for Arduino projects
-          </h1>
-          <p
-            class="mt-5 max-w-2xl text-sm leading-7 text-gruvbox-muted sm:text-base sm:leading-[1.45]"
-          >
-            Exort is an agent-driven coding environment for Arduino projects,
-            built to take ideas from code to working hardware.
-          </p>
-        </div>
-        <div
-          class="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-3"
+      <div class="flex flex-col items-start">
+        <span
+          class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.24em] text-gruvbox-accent-soft sm:text-sm"
         >
-          {#each workflowSteps as step, index}
-            <article
-              bind:this={workflowCardEls[index]}
-              class="group relative aspect-square overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-5 transition-colors duration-300"
-            >
-              <div
-                bind:this={workflowStepEls[index]}
-                class="flex h-full flex-col justify-between rounded-2xl border border-white/6 bg-black/10 p-5 transition-all duration-300 group-hover:border-white/12"
-              >
-                <span
-                  class={`text-2xl font-heading font-semibold leading-none ${step.color}`}
-                >
-                  {step.number}
-                </span>
-
-                <p
-                  class="text-sm leading-6 text-gruvbox-fg1 sm:text-[0.96rem]"
-                >
-                  {step.description}
-                </p>
-              </div>
-            </article>
-          {/each}
-        </div>
+          What is Exort
+        </span>
+        <h1
+          class="mt-2 max-w-xl text-lg uppercase tracking-[0.24em] text-gruvbox-fg1"
+        >
+          A coding environment built for Arduino projects
+        </h1>
+        <p
+          class="mt-5 max-w-2xl text-sm leading-7 text-gruvbox-muted sm:text-base sm:leading-[1.45]"
+        >
+          Exort is an agent-driven coding environment for Arduino projects,
+          built to take ideas from code to working hardware.
+        </p>
       </div>
 
-      <div class="flex">
-        <div
-          class="flex min-h-[280px] w-full items-center justify-center rounded-[2rem] border border-white/10 bg-white/[0.03] p-8"
-        >
-          <img
-            src="/exort-logo.png"
-            alt="Exort logo"
-            class="h-auto w-full max-w-[220px] object-contain"
-          />
-        </div>
+      <div
+        class="grid max-w-[34rem] grid-cols-2 gap-3 justify-self-start md:max-w-[42rem] lg:max-w-[48rem] lg:grid-cols-3"
+      >
+        {#each workflowSteps as step, index}
+          <article
+            bind:this={workflowCardEls[index]}
+            class="group relative overflow-hidden rounded-3xl p-3 transition-colors duration-300"
+          >
+            <div
+              bind:this={workflowStepEls[index]}
+              class="flex h-full flex-col gap-5 p-3 transition-all bg-gruvbox-ink duration-300"
+            >
+              <span
+                class={`text-xl font-heading font-semibold leading-none ${step.color} sm:text-2xl`}
+              >
+                {step.number}
+              </span>
+
+              <p
+                class="mt-auto text-sm leading-6 text-gruvbox-fg1 sm:text-[0.92rem]"
+              >
+                {step.description}
+              </p>
+            </div>
+          </article>
+        {/each}
       </div>
     </section>
 
