@@ -348,7 +348,7 @@
 
   <main id="top">
     <section
-      class="relative mx-auto max-w-7xl overflow-hidden px-4 pb-8 pt-4 sm:px-6 lg:px-8 lg:pt-16"
+      class="relative mx-auto max-w-7xl overflow-hidden px-6 pb-8 pt-4 sm:px-6 lg:px-8 lg:pt-16"
     >
       <div
         class="relative z-10 grid gap-8 xl:grid-cols-[minmax(0,0.9fr)_minmax(0,1.35fr)] xl:items-start xl:gap-12"
@@ -526,7 +526,7 @@
 
     <section
       bind:this={workflowSection}
-      class="mx-auto grid max-w-7xl gap-10 px-6 pb-8 pt-16 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:items-start lg:px-8"
+      class="mx-auto grid max-w-7xl gap-6 sm:gap-10 px-6 pb-8 pt-16 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:items-start lg:px-8"
     >
       <div class="flex flex-col items-start">
         <span
@@ -548,7 +548,8 @@
       </div>
 
       <div
-        class="grid max-w-[34rem] grid-cols-2 gap-3 justify-self-start md:max-w-[42rem] lg:max-w-[48rem] lg:grid-cols-3"
+        class="grid max-w-xl grid-cols-1 sm:grid-cols-3 gap-0 sm:gap-3 justify-self-start. md:justify-self-center
+        md:max-w-2xl lg:max-w-3xl lg:grid-cols-3"
       >
         {#each workflowSteps as step, index}
           <article
@@ -579,9 +580,9 @@
     <FeaturesSection {features} />
 
     <!-- download section -->
-    <section class="px-0 pb-16 sm:px-6 sm:pb-20 lg:px-8">
+    <section class="px-6 pb-16 sm:px-6 sm:pb-20 lg:px-8">
       <div
-        class="mx-auto grid max-w-7xl gap-8 px-4 sm:p-6 lg:grid-cols-3 lg:items-center lg:gap-10 lg:p-8"
+        class="mx-auto grid max-w-7xl gap-8 px-0 sm:p-6 lg:grid-cols-3 lg:items-center lg:gap-10 lg:p-8"
       >
         <div class="relative h-full min-w-0 w-full text-left">
           <!-- <div
