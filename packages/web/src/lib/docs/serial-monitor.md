@@ -1,15 +1,38 @@
 ---
-title: Serial Monitor
-description: View live board output for debugging, logs, and runtime inspection.
-order: 4
-section: Usage
+title: Serial Monitor & Serial Plotter
+description: Read board logs, adjust baud rate, and plot numeric streams from the serial connection.
+order: 7
+section: Serial Monitor & Serial Plotter
 ---
 
-# Serial Monitor
+# Serial Monitor & Serial Plotter
 
-Serial Monitor shows live output from your connected board.
+Serial Monitor shows live output from your connected board. Serial Plotter takes numeric streams from that same connection and turns them into a graph.
 
-Use it for:
+## How To Connect
+
+Select the board and port first, then open the serial view for the active workspace.
+
+If nothing appears, check:
+
+- the board is powered
+- the selected port is correct
+- the sketch was uploaded successfully
+- another app is not holding the port open
+
+## Baud Rate
+
+The baud rate in Exort must match the baud rate in your sketch.
+
+For example, if your code uses:
+
+```cpp
+Serial.begin(115200);
+```
+
+then the monitor should also use `115200`.
+
+## Viewing Logs
 
 - Debug prints
 - Boot logs
@@ -19,11 +42,11 @@ Use it for:
 - Error messages
 - Communication output
 
-## Example Arduino Code
+Example firmware:
 
 ```cpp
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
   Serial.println("Device started");
 }
 
@@ -34,26 +57,36 @@ void loop() {
 }
 ```
 
-## Tips
+## Plotting Numeric Streams
 
-Make sure the baud rate in Exort matches your code.
+Serial Plotter works best when you print plain numbers, one sample per line, or a stable set of comma-separated numbers.
 
-If your code uses `115200`, select `115200` in Serial Monitor.
+Good plotter output:
 
-## Common Problems
+```text
+123
+124
+125
+```
 
-No output:
+Or:
 
-- Wrong port
-- Wrong baud rate
-- Board not running
-- Upload failed
-- Serial not initialized
+```text
+123,456
+124,458
+125,459
+```
 
-Garbled output:
+Bad plotter output:
 
-- Baud rate mismatch
+```text
+Sensor value is: 123
+Temperature now equals 24.3 C
+```
 
-Port busy:
+## Common Serial Problems
 
-- Another app is using the same port
+- no output because the wrong port is selected
+- unreadable text because the baud rate does not match
+- nothing updates because the board did not finish booting
+- data freezes because another app owns the port

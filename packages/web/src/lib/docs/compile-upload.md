@@ -1,49 +1,69 @@
 ---
-title: Compile and Upload
-description: Build and flash firmware through Exort using Arduino CLI workflows.
-order: 3
-section: Usage
+title: Compile & Upload
+description: How manual and automatic compile/upload flows work, plus the common failure points.
+order: 6
+section: Compile & Upload
 ---
 
-# Compile and Upload
+# Compile & Upload
 
 Exort supports automatic and manual compile/upload flows through Arduino CLI.
 
+## Select Board, FQBN, And Port
+
+Before you build or upload, make sure the target is correct:
+
+- board family
+- exact board
+- FQBN, if you need to select it manually
+- serial port
+- required board core
+- required libraries
+
+FQBN stands for fully qualified board name. It is the identifier Arduino CLI uses to compile for a specific board definition.
+
+## Manual Compile
+
+Manual compile is the safest way to validate the current sketch.
+
+Use it when:
+
+- you just edited code
+- you changed libraries
+- you switched boards
+- you want compile feedback before upload
+
+Typical compile failures:
+
+- missing library
+- wrong board selected
+- wrong FQBN
+- syntax error
+- include path problem
+- missing board core
+
+## Manual Upload
+
+Manual upload sends the compiled firmware to the connected board.
+
+If upload fails, check:
+
+- the selected port
+- whether the board is powered
+- whether another app is using the port
+- whether the bootloader needs a reset or button press
+- whether your USB cable supports data
+- whether the correct board package is installed
+
+## Automatic Compile And Upload
+
+Auto compile/upload is useful when you want Exort to keep the edit loop moving.
+
+It is best for small changes and quick iteration, but you still want to verify the board and port before letting it run.
+
 ## Before Compiling
 
-Make sure you selected:
-
-- Correct board
-- Correct port
-- Correct project folder
-- Required board core
-- Required libraries
-
-## Compile
-
-Compile checks whether your firmware can build for the selected board.
-
-Common compile problems:
-
-- Missing library
-- Wrong board selected
-- Syntax error
-- Incorrect include path
-- Board core not installed
-- Wrong function or class name
-
-## Upload
-
-Upload sends the compiled firmware to the connected board.
-
-Common upload problems:
-
-- Wrong port selected
-- Board not connected
-- USB cable is power-only
-- Missing USB driver
-- Board is not in bootloader mode
-- Another app is using the serial port
+Make sure you selected the correct board, port, project folder, board core, and required libraries.
 
 ## Recommended Workflow
 
@@ -55,4 +75,4 @@ Common upload problems:
 6. Observe logs
 7. Iterate
 
-This matches Exort recommended edit, compile, upload, observe cycle.
+If the upload still fails after those checks, copy the exact error text and let the agent inspect it with the board name and the selected port.

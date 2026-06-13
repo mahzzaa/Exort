@@ -1,11 +1,11 @@
 ---
-title: Use the Exort Agent
-description: Practical prompting patterns for embedded coding with Exort Agent.
-order: 2
-section: Usage
+title: AI Agent Usage
+description: What the agent can do and how to prompt it effectively for embedded work.
+order: 5
+section: AI Agent Usage
 ---
 
-# Use the Exort Agent
+# AI Agent Usage
 
 Exort Agent helps you understand, edit, generate, and debug embedded code.
 
@@ -30,6 +30,7 @@ It is powered by OpenCode, which can inspect workspaces, explain code, edit file
 - This project fails to compile. Read the error and fix the code.
 - Create a simple ESP32 Wi-Fi scanner and print networks to Serial Monitor.
 - Refactor this Arduino sketch into `main.ino`, `sensors.h`, and `sensors.cpp`.
+- Replace the blocking delay with a non-blocking loop and explain the change.
 
 ## Prompting Tip
 

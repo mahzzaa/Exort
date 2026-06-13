@@ -1,34 +1,41 @@
 ---
 title: Requirements
-description: Required tools for packaged desktop usage and source development.
-order: 4
-section: Intro
+description: What Exort needs installed before you can compile, upload, and use the agent.
+order: 2
+section: Requirements
 ---
 
 # Requirements
 
-Exort needs a few tools depending on whether you use the packaged desktop app or run from source.
+Exort depends on two core runtime pieces:
 
-## Desktop App Requirements
+- Arduino CLI for board packages, compile, and upload flows
+- OpenCode or an OpenCode-compatible provider setup for the agent
 
-- Arduino CLI
-- OpenCode runtime/provider configuration
+## Arduino CLI
+
+Arduino CLI is the tool Exort uses to discover boards, install board packages, compile firmware, and upload to devices.
+
+You will usually need it installed even if Exort manages it in the background, because board packages and upload tools still come from the Arduino ecosystem.
+
+## OpenCode And Providers
+
+Exort uses OpenCode for AI workspace access.
+
+In the app, this usually means:
+
+- choosing a provider
+- adding an API key or signing in
+- selecting a model
+- confirming the workspace can talk to the agent
+
+If you already use an OpenCode-compatible provider setup, you can bring that into Exort instead of starting from scratch.
+
+## Optional But Common
+
 - USB drivers for your board
-- Board platform/core installed
+- Board platforms or cores for the target hardware
+- A stable data USB cable
+- Source development tools if you are running Exort from the repo
 
-Exort uses Arduino CLI for board packages, compile, and upload flows. It also uses OpenCode as the AI runtime/provider layer.
-
-## Source Development Requirements
-
-- Node.js 20 or newer
-- npm 10 or newer
-- Git
-- Platform build tools required by Electron/native Node dependencies
-
-These are listed in Exort repository requirements.
-
-## Check Desktop Requirements
-
-```bash
-npm --workspace @exort/desktop run requirements:status
-```
+If something is missing, open the Requirements view in Exort and install the needed component before you start compiling.

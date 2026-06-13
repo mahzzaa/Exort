@@ -48,7 +48,16 @@ export interface DocsCatalog {
 }
 
 const docsModules = import.meta.glob('/src/lib/docs/**/*.{md,svx}');
-const sectionOrder = ['Intro', 'Usage', 'Configuration', 'Guides', 'Reference', 'Community'] as const;
+const sectionOrder = [
+  'Getting Started',
+  'Requirements',
+  'First Project Tutorial',
+  'Board Manager',
+  'AI Agent Usage',
+  'Compile & Upload',
+  'Serial Monitor & Serial Plotter',
+  'Community'
+] as const;
 let docsCatalogPromise: Promise<DocsCatalog> | null = null;
 const docsModuleCache = new Map<string, { default?: Component; metadata?: unknown }>();
 

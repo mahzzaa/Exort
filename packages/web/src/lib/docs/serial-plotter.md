@@ -1,8 +1,8 @@
 ---
 title: Serial Plotter
-description: Graph numeric board output for sensors, calibration, and tuning.
-order: 5
-section: Usage
+description: Notes for plotting numeric streams from the serial connection.
+order: 8
+section: Serial Monitor & Serial Plotter
 ---
 
 # Serial Plotter
@@ -18,6 +18,7 @@ Use it for:
 - Motor values
 - Battery voltage
 - PID tuning
+- quick visual checks during tuning
 
 ## Basic Example
 
@@ -69,3 +70,5 @@ Bad for plotter:
 Sensor value is: 123
 Temperature now equals 24.3 C
 ```
+
+If you need both logs and graphs, keep the plotted line separate from human-readable status messages.
