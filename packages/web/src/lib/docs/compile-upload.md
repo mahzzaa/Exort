@@ -11,68 +11,34 @@ Exort supports automatic and manual compile/upload flows through Arduino CLI.
 
 ## Select Board, FQBN, And Port
 
-Before you build or upload, make sure the target is correct:
+Before you compile or upload, select the correct board, port, and project settings.
 
-- board family
-- exact board
-- FQBN, if you need to select it manually
-- serial port
-- required board core
-- required libraries
+If you are not sure which board, port, or project configuration to use, <span class="text-gruvbox-orange">ask Exort</span>. Exort can guide you through the correct selection.
 
-FQBN stands for fully qualified board name. It is the identifier Arduino CLI uses to compile for a specific board definition.
+For board package installation and board platform details, see [Board Manager](/docs/board-manager).
 
-## Manual Compile
+## Manual Compile And Upload
 
-Manual compile is the safest way to validate the current sketch.
+After your board and port are configured, you can compile and upload manually.
 
-Use it when:
-
-- you just edited code
-- you changed libraries
-- you switched boards
-- you want compile feedback before upload
-
-Typical compile failures:
-
-- missing library
-- wrong board selected
-- wrong FQBN
-- syntax error
-- include path problem
-- missing board core
-
-## Manual Upload
-
-Manual upload sends the compiled firmware to the connected board.
-
-If upload fails, check:
-
-- the selected port
-- whether the board is powered
-- whether another app is using the port
-- whether the bootloader needs a reset or button press
-- whether your USB cable supports data
-- whether the correct board package is installed
+This is useful when you want direct control over the process or want to validate each step yourself.
 
 ## Automatic Compile And Upload
 
-Auto compile/upload is useful when you want Exort to keep the edit loop moving.
+Exort can also compile and upload the code automatically.
 
-It is best for small changes and quick iteration, but you still want to verify the board and port before letting it run.
+If you prefer, Exort can handle the full process for you without requiring separate manual steps.
 
-## Before Compiling
+## Output Window
 
-Make sure you selected the correct board, port, project folder, board core, and required libraries.
+The Output Window shows the compile and upload process, including detailed progress and error messages.
 
-## Recommended Workflow
+If the process fails, you can add the full error output to the context and ask Exort to inspect it.
 
-1. Ask Exort Agent to review or generate code
-2. Compile
-3. Fix compile errors
-4. Upload
-5. Open Serial Monitor
-6. Observe logs
-7. Iterate
+Exort can usually determine whether the issue is caused by:
 
-If the upload still fails after those checks, copy the exact error text and let the agent inspect it with the board name and the selected port.
+- code that needs to be changed
+- project settings that need to be adjusted
+- hardware configuration that needs to be corrected
+
+If the issue is related to code or configuration, Exort can usually fix it directly. If the problem is hardware-related, Exort can tell you what to check and how to correct it.

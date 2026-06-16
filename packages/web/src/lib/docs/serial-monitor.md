@@ -1,17 +1,21 @@
 ---
-title: Serial Monitor & Serial Plotter
-description: Read board logs, adjust baud rate, and plot numeric streams from the serial connection.
+title: Serial Monitor
+description: Read live board logs and debug serial output from the active connection.
 order: 7
-section: Serial Monitor & Serial Plotter
+section: Serial Monitor & Plotter
 ---
 
-# Serial Monitor & Serial Plotter
+# Serial Monitor
 
-Serial Monitor shows live output from your connected board. Serial Plotter takes numeric streams from that same connection and turns them into a graph.
+Serial Monitor shows live output from your connected board.
+
+You can always <span class="text-gruvbox-orange">ask Exort</span> to prepare the serial setup for you. Exort can configure the monitor in the most effective way for your current board, sketch, and workflow.
 
 ## How To Connect
 
 Select the board and port first, then open the serial view for the active workspace.
+
+If the connection does not behave as expected, <span class="text-gruvbox-orange">Ask Exort first.</span> In many cases, Exort can identify the most likely cause and guide you through the correct fix.
 
 If nothing appears, check:
 
@@ -33,6 +37,18 @@ Serial.begin(115200);
 then the monitor should also use `115200`.
 
 ## Viewing Logs
+
+Serial Monitor helps you debug and verify device behavior.
+
+Examples:
+
+```text
+System Started
+WiFi Connected
+Temperature: 23.7
+```
+
+You can use it for:
 
 - Debug prints
 - Boot logs
@@ -56,37 +72,3 @@ void loop() {
   delay(500);
 }
 ```
-
-## Plotting Numeric Streams
-
-Serial Plotter works best when you print plain numbers, one sample per line, or a stable set of comma-separated numbers.
-
-Good plotter output:
-
-```text
-123
-124
-125
-```
-
-Or:
-
-```text
-123,456
-124,458
-125,459
-```
-
-Bad plotter output:
-
-```text
-Sensor value is: 123
-Temperature now equals 24.3 C
-```
-
-## Common Serial Problems
-
-- no output because the wrong port is selected
-- unreadable text because the baud rate does not match
-- nothing updates because the board did not finish booting
-- data freezes because another app owns the port

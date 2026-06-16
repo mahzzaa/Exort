@@ -40,11 +40,11 @@
   {:else}
     <details class="group mb-3 last:mb-0" open={!compact && hasActivePath(section.nodes)}>
       <summary
-        class="flex cursor-pointer list-none items-center justify-between gap-3 px-2 py-2 text-left text-[0.72rem] uppercase tracking-[0.2em] text-gruvbox-muted/85 transition-colors duration-150 hover:text-gruvbox-fg1 focus-visible:text-gruvbox-fg1 [&::-webkit-details-marker]:hidden"
+        class="flex cursor-pointer list-none items-start justify-between gap-3 px-2 py-2 text-left text-[0.72rem] uppercase tracking-[0.2em] text-gruvbox-muted/85 transition-colors duration-150 hover:text-gruvbox-fg1 focus-visible:text-gruvbox-fg1 [&::-webkit-details-marker]:hidden"
       >
-        <span>{section.title}</span>
+        <span class="min-w-0">{section.title}</span>
         <svg
-          class="h-3.5 w-3.5 shrink-0 text-gruvbox-muted/75 transition-transform duration-150 group-open:rotate-180"
+          class="mt-0.5 h-3.5 w-3.5 shrink-0 text-gruvbox-muted/75 transition-transform duration-150 group-open:rotate-180"
           viewBox="0 0 16 16"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

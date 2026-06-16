@@ -5,37 +5,65 @@ order: 2
 section: Requirements
 ---
 
+<script lang="ts">
+  import { ArrowRight } from "lucide-svelte";
+</script>
+
 # Requirements
 
-Exort depends on two core runtime pieces:
+Exort depends on two main components:
 
-- Arduino CLI for board packages, compile, and upload flows
-- OpenCode or an OpenCode-compatible provider setup for the agent
+- Arduino CLI for board management, compilation, and firmware uploads
+- OpenCode for AI workspace access and provider integrations
 
 ## Arduino CLI
 
-Arduino CLI is the tool Exort uses to discover boards, install board packages, compile firmware, and upload to devices.
+Exort uses Arduino CLI to manage boards, install board packages, compile firmware, and upload code to supported devices.
 
-You will usually need it installed even if Exort manages it in the background, because board packages and upload tools still come from the Arduino ecosystem.
+To install Arduino CLI in Exort:
 
-## OpenCode And Providers
+<span class="inline-flex items-center gap-2">
+  <code>Settings</code>
+  <ArrowRight class="h-4 w-4" />
+  <code>Requirements</code>
+  <ArrowRight class="h-4 w-4" />
+  <code>Install</code>
+</span>
+
+Once installed, Exort uses Arduino CLI for board-related workflows inside the app.
+
+## OpenCode
 
 Exort uses OpenCode for AI workspace access.
 
-In the app, this usually means:
+To install OpenCode:
 
-- choosing a provider
-- adding an API key or signing in
-- selecting a model
-- confirming the workspace can talk to the agent
+<span class="inline-flex items-center gap-2">
+  <code>Settings</code>
+  <ArrowRight class="h-4 w-4" />
+  <code>Requirements</code>
+  <ArrowRight class="h-4 w-4" />
+  <code>Install</code>
+</span>
 
-If you already use an OpenCode-compatible provider setup, you can bring that into Exort instead of starting from scratch.
+Once OpenCode is installed, Exort can connect to OpenCode-compatible AI providers.
 
-## Optional But Common
+## Providers
 
-- USB drivers for your board
-- Board platforms or cores for the target hardware
-- A stable data USB cable
-- Source development tools if you are running Exort from the repo
+Exort supports AI providers through OpenCode-compatible integrations.
 
-If something is missing, open the Requirements view in Exort and install the needed component before you start compiling.
+All supported providers are available through OpenCode. After OpenCode is installed, you can open the `Providers` section in Exort to:
+
+- browse available providers
+- connect your preferred provider
+- select a model
+- manage your AI setup inside the app
+
+You can use the free AI options that are available through OpenCode, or connect your own account by adding an API key for a supported provider.
+
+This gives you flexibility to use either the default OpenCode-based setup or your own provider credentials.
+
+## Notes
+
+- Some boards may also require platform packages, cores, or drivers
+- If a required component is missing, open `Settings`, go to `Requirements`, and install it before continuing

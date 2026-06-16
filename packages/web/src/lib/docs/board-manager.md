@@ -5,63 +5,105 @@ order: 4
 section: Board Manager
 ---
 
+<script lang="ts">
+  import { ArrowRight } from "lucide-svelte";
+</script>
+
 # Board Manager
 
 Board Manager helps install and manage Arduino CLI board platforms and cores.
 
-## What It Installs
+Exort can also install board packages for you when you ask it to.
 
-A board core tells Arduino CLI how to compile and upload code for a specific family of boards.
+## Install A Board Package
 
-Examples:
+To install a board package in Exort:
 
-- Arduino AVR
-- ESP32
-- ESP8266
-- RP2040
-- STM32
-- Teensy
+<div class="inline-flex items-center gap-2">
+  <span class="inline-flex items-center gap-2">
+    <code>Settings</code>
+  </span>
+  <ArrowRight class="h-4 w-4 text-gruvbox-muted/80" />
+  <span class="inline-flex items-center gap-2">
+    <code>Boards</code>
+  </span>
+  <ArrowRight class="h-4 w-4 text-gruvbox-muted/80" />
+  <span class="inline-flex items-center gap-2">
+    <span>Search for the board you want to use</span>
+  </span>
+  <ArrowRight class="h-4 w-4 text-gruvbox-muted/80" />
+  <span class="inline-flex items-center gap-2">
+    <code>Install</code>
+  </span>
+</div>
+
+Once installed, the board package is ready to use.
 
 ## Supported Boards
 
-Exort is intended to work with Arduino CLI-compatible platforms for:
+Exort is designed to work with Arduino CLI-compatible platforms, including:
 
-- Arduino
-- ESP32
-- ESP8266
-- RP2040
-- STM32
-- Teensy
+### Arduino
+
+- Uno
+- Nano
+- Mega
+- Leonardo
+
+### ESP32
+
+- ESP32 Dev Module
+- ESP32-S3
+- ESP32-C3
+
+### ESP8266
+
+- NodeMCU
+- Wemos D1 Mini
+
+### STM32
+
+- STM32 Blue Pill
+- STM32 Nucleo
+
+### Teensy
+
+- Teensy 4.x
+- Teensy LC
 
 Other Arduino CLI-compatible boards may also work if the correct core and toolchain are installed.
 
-## When You Need To Install A Core
+## When You Need To Install A Package
 
-You usually need to install a core when:
+You usually need to install a board package when:
 
 - your board does not appear
 - compile says board platform is missing
 - upload tool is missing
 - you are using a new board family
 
-## Common Board And Port Problems
+In many cases, Exort can identify the correct package and install it for you.
 
-The most common issues are:
+## Common Problems
 
-- the wrong board family is selected
-- the wrong FQBN is selected
-- the serial port changes after reconnecting the board
-- the board needs a bootloader button press before upload
-- another app already owns the port
-- the USB cable is charge-only
+<span class="text-gruvbox-orange">Ask Exort first.</span>
 
-## Good Recovery Steps
+Exort can often identify the most likely issue, guide you through the correct checks, and handle many of the fixes directly inside the app.
 
-If a board is missing or a port looks wrong:
+### Board Not Found
 
-1. unplug and replug the board
-2. try a different data USB cable
-3. close other serial apps
-4. install or update the board core
-5. refresh the port list
-6. try the upload again
+- Verify the USB cable
+- Verify the drivers
+- Reconnect the device
+
+### Port Missing
+
+- Restart Exort
+- Reconnect the hardware
+- Install the required USB drivers
+
+### Upload Failed
+
+- Verify the correct board selection
+- Verify the correct serial port
+- Press the `BOOT` button if required by the board
